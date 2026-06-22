@@ -263,16 +263,16 @@
   .gcredit{margin-top:16px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:#7f97a0;letter-spacing:.01em;}
   .gcredit a{color:#9fb3bb;}
 
-  /* ---------- masonry gallery + lightbox ---------- */
-  .masonry{columns:4 240px;column-gap:14px;margin-top:42px;}
-  @media(max-width:1100px){.masonry{columns:3 220px;}}
-  @media(max-width:760px){.masonry{columns:2 150px;}}
-  .mphoto{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0a1c27;cursor:zoom-in;}
-  .mphoto img{width:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
-  .mphoto:hover img{transform:scale(1.04);}
-  .mphoto figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;font-family:"Spline Sans Mono",monospace;font-size:11.5px;line-height:1.3;color:#eef4f3;background:linear-gradient(0deg,rgba(8,23,31,.92),rgba(8,23,31,.1) 80%,transparent);opacity:0;transition:opacity .3s;}
+  /* ---------- instagram-style grid + lightbox ---------- */
+  .iggrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:42px;}
+  @media(max-width:1100px){.iggrid{grid-template-columns:repeat(4,1fr);}}
+  @media(max-width:760px){.iggrid{grid-template-columns:repeat(3,1fr);gap:4px;}}
+  .mphoto{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:4px;background:#0a1c27;cursor:pointer;}
+  .mphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease,filter .3s ease;}
+  .mphoto:hover img{transform:scale(1.06);filter:brightness(.72);}
+  .mphoto figcaption{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;font-family:"Spline Sans Mono",monospace;font-size:11px;line-height:1.25;color:#fff;background:linear-gradient(0deg,rgba(8,23,31,.6),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none;}
   .mphoto:hover figcaption{opacity:1;}
-  @media(hover:none){.mphoto figcaption{opacity:1;font-size:10.5px;padding:18px 10px 8px;}}
+  @media(hover:none){.mphoto figcaption{display:none;}}
   .lbox{position:fixed;inset:0;z-index:120;background:rgba(8,23,31,.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out;}
   .lbox.open{display:flex;}
   .lbox img{max-width:92vw;max-height:84vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
@@ -1827,7 +1827,7 @@
     <span class="eyebrow">Galeria · o Portucale</span>
     <h2 class="lead-h">É assim que ela é</h2>
     <p class="sec-intro">Fotografias do próprio Portucale e da sua tripulação — Leixões, o Douro, a costa e as Rias, do sol ao nevoeiro, do verão ao inverno. Toca numa foto para a ampliar.</p>
-    <div class="masonry">
+    <div class="iggrid">
       <figure class="mphoto"><img loading="lazy" src="fotos/portucale-por-sol-mar.jpg" alt="Portucale — Pôr do sol no mar" /><figcaption>Pôr do sol no mar</figcaption></figure>
       <figure class="mphoto"><img loading="lazy" src="fotos/portucale-regresso-por-sol.jpg" alt="Portucale — Regresso ao fim do dia, Leixões" /><figcaption>Regresso ao fim do dia, Leixões</figcaption></figure>
       <figure class="mphoto"><img loading="lazy" src="fotos/portucale-fundeado.jpg" alt="Portucale — Fundeado, em águas calmas" /><figcaption>Fundeado, em águas calmas</figcaption></figure>
@@ -2248,7 +2248,7 @@
   var lb=document.getElementById('lbox');
   if(lb){
     var lbImg=document.getElementById('lboxImg'), lbCap=document.getElementById('lboxCap');
-    document.querySelectorAll('.masonry .mphoto img').forEach(function(im){
+    document.querySelectorAll('.mphoto img').forEach(function(im){
       im.addEventListener('click', function(){
         lbImg.src=im.getAttribute('src'); lbImg.alt=im.alt||'';
         var c=im.parentElement.querySelector('figcaption');
