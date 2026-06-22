@@ -125,6 +125,18 @@
   .chip b{color:var(--brass-soft);font-weight:500;}
   .hero-art{position:relative;min-height:380px;}
   .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.4));}
+  .hero-art .hero-photo{position:relative;margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5);aspect-ratio:4/5;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;font-family:"Spline Sans Mono",monospace;font-size:11.5px;letter-spacing:.02em;color:#eef4f3;background:linear-gradient(0deg,rgba(8,23,31,.78),transparent);}
+  @media(max-width:880px){.hero-art{min-height:0;}.hero-art .hero-photo{aspect-ratio:3/4;max-width:420px;margin:14px auto 0;}}
+  /* prominent gallery link in menu */
+  .menu-feature{display:flex;align-items:center;gap:14px;margin:2px 0 24px;padding:16px 20px;border:1px solid var(--brass);border-radius:14px;background:linear-gradient(90deg,rgba(203,161,76,.16),rgba(203,161,76,.04));color:var(--foam);text-decoration:none;transition:background .2s,transform .2s;}
+  .menu-feature:hover{background:linear-gradient(90deg,rgba(203,161,76,.28),rgba(203,161,76,.08));transform:translateY(-1px);}
+  .menu-feature .mf-ic{font-size:22px;color:var(--brass-soft);line-height:1;}
+  .menu-feature .mf-tx{flex:1;font-size:16px;}
+  .menu-feature .mf-tx b{color:var(--brass-soft);}
+  .menu-feature .mf-tx small{display:block;font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:#aebfc4;margin-top:3px;letter-spacing:.02em;}
+  .menu-feature .mf-go{font-family:"Spline Sans Mono",monospace;font-size:12px;color:var(--brass-soft);white-space:nowrap;}
   .scrollcue{padding:30px 0 40px;display:flex;justify-content:center;}
   .scrollcue span{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.3em;color:var(--brass-soft);opacity:.7;text-transform:uppercase;}
 
@@ -534,6 +546,11 @@
       <span class="mt">Portucale · <span style="color:var(--brass-soft)">Manual de bordo</span></span>
       <button class="menu-close" id="menuClose" type="button" aria-label="Fechar menu">&times;</button>
     </div>
+    <a class="menu-feature" href="#galeria">
+      <span class="mf-ic">&#9638;</span>
+      <span class="mf-tx"><b>Galeria de fotos</b><small>O Portucale &amp; a tripulação — 26 fotos, do sol ao nevoeiro</small></span>
+      <span class="mf-go">ver &rarr;</span>
+    </a>
     <div class="menu-grid">
       <div class="idxcol">
         <div class="pt">Parte I</div>
@@ -582,6 +599,7 @@
           <li><a href="#aguas">As águas de casa</a></li>
           <li><a href="#historia">A história</a></li>
           <li><a href="#diario">Histórias do diário</a></li>
+          <li><a href="#galeria">Galeria de fotos</a></li>
           <li><a href="#review">A review do barco</a></li>
           <li><a href="#faq">Perguntas frequentes</a></li>
         </ul>
@@ -604,47 +622,11 @@
         <span class="chip">Atlântico &amp; Rias Galegas</span>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <!-- heeled sailing illustration -->
-      <svg viewBox="0 0 600 460" role="img" aria-label="Ilustração de um veleiro Dufour 34 a navegar inclinado">
-        <defs>
-          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#16384a"/><stop offset="1" stop-color="#0a1f2b"/>
-          </linearGradient>
-          <linearGradient id="sail" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#F7FBFA"/><stop offset="1" stop-color="#D7E2E4"/>
-          </linearGradient>
-        </defs>
-        <!-- horizon glow -->
-        <circle cx="470" cy="120" r="150" fill="#CBA14C" opacity="0.10"/>
-        <!-- sea -->
-        <path d="M0 322 Q150 306 300 320 T600 318 V460 H0 Z" fill="url(#sea)"/>
-        <path d="M0 330 Q150 318 300 330 T600 328" fill="none" stroke="#3FA37C" stroke-opacity=".25" stroke-width="2"/>
-        <path d="M40 352 q40 -8 80 0 t80 0" fill="none" stroke="#7FA9B8" stroke-opacity=".3" stroke-width="2"/>
-        <path d="M380 360 q40 -8 80 0 t80 0" fill="none" stroke="#7FA9B8" stroke-opacity=".3" stroke-width="2"/>
-        <!-- boat group, heeled ~13deg -->
-        <g class="wave-anim" transform="rotate(-13 300 322)">
-          <!-- keel + bulb -->
-          <path d="M286 320 L292 392 L320 392 L312 320 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-opacity=".5" stroke-width="2"/>
-          <ellipse cx="306" cy="394" rx="26" ry="7" fill="#CBA14C"/>
-          <!-- hull -->
-          <path d="M150 318 Q160 348 210 352 L408 352 Q452 350 470 320 Q450 330 300 330 Q200 330 150 318 Z" fill="#10303f" stroke="#CBA14C" stroke-width="2.5"/>
-          <!-- deck/sheer line -->
-          <path d="M150 318 Q300 304 470 320" fill="none" stroke="#E0C282" stroke-width="2"/>
-          <!-- coachroof -->
-          <path d="M250 314 Q300 300 360 308 L356 320 L256 322 Z" fill="#0c2734" stroke="#CBA14C" stroke-opacity=".5" stroke-width="1.5"/>
-          <!-- mast -->
-          <line x1="312" y1="312" x2="318" y2="92" stroke="#E0C282" stroke-width="3.4"/>
-          <!-- boom -->
-          <line x1="316" y1="150" x2="246" y2="176" stroke="#E0C282" stroke-width="3"/>
-          <!-- mainsail -->
-          <path d="M316 100 L316 150 L250 174 Q300 140 316 100 Z" fill="url(#sail)" opacity=".96"/>
-          <!-- genoa -->
-          <path d="M318 110 Q420 230 452 300 Q380 308 326 300 Q320 210 318 110 Z" fill="url(#sail)" opacity=".9"/>
-          <!-- forestay -->
-          <line x1="318" y1="98" x2="452" y2="300" stroke="#9fb3bb" stroke-width="1" opacity=".6"/>
-        </g>
-      </svg>
+    <div class="hero-art">
+      <figure class="hero-photo">
+        <img src="fotos/portucale-regresso-por-sol.jpg" alt="O veleiro Portucale a navegar ao pôr do sol, ao largo de Leixões" />
+        <figcaption>Portucale · regresso ao fim do dia</figcaption>
+      </figure>
     </div>
   </div>
   <div class="scrollcue"><span>desce — o manual começa no índice ↓</span></div>
@@ -708,6 +690,7 @@
           <li><a href="#aguas">As águas de casa</a></li>
           <li><a href="#historia">A história</a></li>
           <li><a href="#diario">Histórias do diário</a></li>
+          <li><a href="#galeria">Galeria de fotos</a></li>
           <li><a href="#review">A review do barco</a></li>
           <li><a href="#faq">Perguntas frequentes</a></li>
         </ul>
@@ -1829,7 +1812,7 @@
 </section>
 
 <!-- ===================== GALLERY ===================== -->
-<section class="pad" style="background:var(--navy)">
+<section id="galeria" class="pad" style="background:var(--navy)">
   <div class="wrap reveal">
     <span class="eyebrow">Galeria · o Portucale</span>
     <h2 class="lead-h">É assim que ela é</h2>
