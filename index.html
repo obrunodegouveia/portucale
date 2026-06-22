@@ -432,6 +432,10 @@
   .blist li{position:relative;padding:10px 0 10px 26px;border-bottom:1px solid var(--line);font-size:15.5px;color:#DCE7EA;line-height:1.5;}
   .blist li:last-child{border-bottom:none;}
   .blist li:before{content:"";position:absolute;left:3px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--brass);}
+  .steps{list-style:none;counter-reset:s;padding:0;margin:8px 0 0;}
+  .steps li{position:relative;counter-increment:s;padding:9px 0 9px 42px;font-size:16px;color:#DCE7EA;line-height:1.5;border-bottom:1px solid var(--line);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:8px;width:27px;height:27px;border-radius:50%;background:rgba(203,161,76,.16);border:1px solid var(--brass);color:var(--brass-soft);font-family:"Spline Sans Mono",monospace;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .blist li b{color:var(--brass-soft);}
   .paper .blist li{border-color:var(--line-dk);color:#33444a;}
   .paper .blist li b{color:#8a6312;}
@@ -561,6 +565,7 @@
           <li><a href="#sentir">Sente a inclinação</a></li>
           <li><a href="#forte">Quão forte é</a></li>
           <li><a href="#bolina">A bolina ideal</a></li>
+          <li><a href="#potencia">Velas para potência</a></li>
           <li><a href="#bordo">Mudar de bordo</a></li>
         </ul>
       </div>
@@ -584,6 +589,7 @@
           <li><a href="#mob">Homem ao mar</a></li>
           <li><a href="#afunda">Pode afundar?</a></li>
           <li><a href="#motor">Se o motor falhar</a></li>
+          <li><a href="#martempo">Parar, capear &amp; ondas</a></li>
           <li><a href="#enjoo">Enjoo</a></li>
           <li><a href="#emerg2">Incêndio &amp; socorros</a></li>
           <li><a href="#seguranca">Onde está tudo</a></li>
@@ -652,6 +658,7 @@
           <li><a href="#sentir">Sente a inclinação</a></li>
           <li><a href="#forte">Quão forte é</a></li>
           <li><a href="#bolina">A bolina ideal</a></li>
+          <li><a href="#potencia">Velas para potência</a></li>
           <li><a href="#bordo">Mudar de bordo</a></li>
         </ul>
       </div>
@@ -677,6 +684,7 @@
           <li><a href="#mob">Homem ao mar</a></li>
           <li><a href="#afunda">Pode afundar?</a></li>
           <li><a href="#motor">Se o motor falhar</a></li>
+          <li><a href="#martempo">Parar, capear &amp; ondas</a></li>
           <li><a href="#enjoo">Enjoo</a></li>
           <li><a href="#emerg2">Incêndio &amp; socorros</a></li>
           <li><a href="#seguranca">Onde está tudo</a></li>
@@ -977,6 +985,162 @@
         <p class="pull" style="color:var(--brass)">À bolina (o mais perto do vento que dá) é onde o barco inclina mais — e onde vale a regra dos 15–20°.</p>
         <p>Ao través e ao largo, o barco endireita-se naturalmente, fica mais rápido e mais confortável: o vento empurra em vez de derrubar. À popa quase não há inclinação.</p>
         <p>Se alguma vez te sentires sobrecarregado à bolina, <strong>arribar</strong> ligeiramente (apontar mais para longe do vento) é o gesto que tira tensão de tudo de uma vez. Saber isto é saber sair de qualquer aperto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SAIL POWER ===================== -->
+<section id="potencia" class="pad" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Tirar potência das velas</span>
+    <h2 class="lead-h">Potência = forma + ângulo + uma fenda aberta</h2>
+    <p class="sec-intro">A força de uma vela nasce de três coisas: uma <strong>forma cheia</strong> (a vela com barriga), o <strong>ângulo certo</strong> ao vento (nem apertada de mais, a matear, nem aberta de mais, a portilhar) e a <strong>fenda</strong> entre a genoa e a grande aberta e a respirar. O teu medidor são os <strong>fios</strong> (telltales): com os dois lados a voar a direito, estás no ponto.</p>
+
+    <div class="split" style="align-items:start">
+      <div class="reassure">
+        <p class="pull">Máxima potência não é «apertar tudo». É a vela com a barriga certa e o ar a sair limpo pela esteira.</p>
+        <p>Para <b>dar</b> potência (vento fraco a médio): deixa as velas mais <b>cheias</b> — alivia o cunho (esticador da esteira), o cunningham e o estai de popa, deixando o estai de proa «cair» um nada. Trazes a barriga para o meio da vela e ela puxa mais.</p>
+        <p>Para <b>tirar</b> potência (vento a mais ou a adornar de mais): <b>achata</b> tudo — caça o cunho, o estai de popa e o cunningham — e deixa a vela <b>torcer</b> em cima para largar o excesso. A seguir, riza.</p>
+        <ul class="blist">
+          <li><b>Fios da genoa (no grátil):</b> se os de barlavento (lado do vento) levantam, estás aberto — caça um pouco ou orza. Se os de sotavento abanam, estás apertado — alivia ou arriba. Os dois a voar a direito = ponto certo.</li>
+          <li><b>Fios da esteira (na valuma da grande):</b> todos a voar = bom. Se o de cima se esconde atrás da vela, tens a escota grande caçada de mais — abre um pouco para deixar torcer.</li>
+        </ul>
+      </div>
+      <div class="posfig">
+        <svg viewBox="0 0 360 340" role="img" aria-label="Afinação das velas para potência, vista de cima: grande, genoa e a fenda entre elas">
+          <g stroke="#7FA9B8" stroke-width="2.4" fill="#7FA9B8">
+            <line x1="300" y1="36" x2="254" y2="88"/><path d="M254 88 l2 -15 l11 6 z"/>
+          </g>
+          <text x="304" y="28" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#9fc0cc">vento</text>
+          <path d="M190 26 C 238 74 246 168 230 292 C 222 308 206 314 190 314 C 174 314 158 308 150 292 C 134 168 142 74 190 26 Z" fill="#0c2734" stroke="#CBA14C" stroke-width="2"/>
+          <line x1="190" y1="40" x2="190" y2="300" stroke="#E0C282" stroke-opacity=".3" stroke-width="1.3" stroke-dasharray="3 6"/>
+          <circle cx="190" cy="44" r="3" fill="#E0C282"/><circle cx="190" cy="170" r="4" fill="#E0C282"/>
+          <path d="M190 46 C 150 84 140 144 150 188 C 168 156 182 102 190 46 Z" fill="#F7FBFA" fill-opacity=".9" stroke="#cdd9da" stroke-width="1.4"/>
+          <path d="M190 160 C 158 190 150 230 154 262 C 174 232 184 196 190 160 Z" fill="#EFE7D4" fill-opacity=".92" stroke="#cdd9da" stroke-width="1.4"/>
+          <line x1="190" y1="170" x2="154" y2="262" stroke="#9aa6a2" stroke-width="1.4"/>
+          <g stroke="#3FA37C" stroke-width="2"><line x1="182" y1="84" x2="170" y2="88"/><line x1="176" y1="120" x2="164" y2="125"/></g>
+          <path d="M156 186 q14 -10 30 -22" fill="none" stroke="#CBA14C" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <text x="112" y="120" font-family="Spline Sans Mono" font-size="12" fill="#cfe0e3">genoa</text>
+          <text x="110" y="246" font-family="Spline Sans Mono" font-size="12" fill="#e8d3a6">grande</text>
+          <text x="146" y="214" font-family="Spline Sans Mono" font-size="11" fill="#d8b86a">fenda</text>
+          <text x="198" y="98" font-family="Spline Sans Mono" font-size="10" fill="#7fd0b3">fios a voar</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>A vela grande</h3>
+        <p>O <b>carro da escota</b> (traveller) põe a retranca perto do eixo sem estrangular a valuma: à bolina, sobe o carro a barlavento; numa rajada, larga-o a sotavento e a grande alivia sozinha. A <b>escota</b> afina a torção — caça até o fio de cima da esteira voar, sem o «esconder».</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>A genoa</h3>
+        <p>O <b>carro/patesca da genoa</b> regula a torção: à proa fecha a valuma de cima (mais potência), à ré abre-a (alivia o topo). Acerta-o até os fios do grátil <b>quebrarem todos ao mesmo tempo</b>, de cima a baixo. Caça-a até a valuma ficar quase paralela à grande — sem a empurrar contra ela.</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>A fenda (slot)</h3>
+        <p>Entre a valuma da genoa e o grátil da grande há um corredor por onde o ar acelera. Se caças a genoa de mais, fechas a fenda e a grande «leva vento por trás» (porta). Mantém a fenda <b>aberta e a respirar</b>: é metade da potência do barco.</p>
+      </div>
+    </div>
+
+    <p class="sec-intro" style="margin-top:34px"><b>E o ponto de vela mais potente?</b> Não é à bolina — é ao <b>través</b> e ao <b>largo</b> (vento de lado a três quartos). Aí o barco endireita-se, as velas trabalham com o vento a empurrar e a Portucale ganha o seu melhor andamento. À bolina sacrificas potência para ganhar barlavento; a favor, abres tudo e deslizas.</p>
+  </div>
+</section>
+
+<!-- ===================== STOP & HEAVY WEATHER ===================== -->
+<section id="martempo" class="pad" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Quando o mar aperta</span>
+    <h2 class="lead-h">Parar o barco, capear e atacar as ondas</h2>
+    <p class="sec-intro">Em mar aberto e com vento, uma Portucale (lastro de 40%, autoendireita) tem sempre resposta. O segredo não é força — é <strong>calma, espaço a sotavento e o ângulo certo ao mar</strong>. Aqui ficam as três coisas que mais te tiram de um aperto: <b>pôr à capa</b> (parar), <b>reduzir e aguentar</b>, e <b>escolher como atacas as vagas</b>.</p>
+
+    <div class="split" style="align-items:start;margin-top:46px">
+      <div class="reassure">
+        <h3 style="font-size:24px;color:var(--foam);margin:0 0 4px">Pôr à capa — parar e descansar</h3>
+        <p style="color:#9fb3bb;margin:0 0 14px;font-family:'Spline Sans Mono',monospace;font-size:13.5px">heave-to · precisa de espaço a sotavento (mar profundo)</p>
+        <p>É o travão do veleiro: a Portucale fica quase parada, equilibrada, a derivar devagar — para rizar, comer, resolver algo ou esperar que um grão passe.</p>
+        <ol class="steps">
+          <li>Se há vento a mais, <b>reduz pano primeiro</b> (1.º ou 2.º rizo + genoa pequena).</li>
+          <li>Navega <b>à bolina</b>, como se fosses cingir.</li>
+          <li><b>Vira por davante</b> mas <b>não largues</b> a escota da genoa — ela fica «à fala», cheia do lado do vento.</li>
+          <li><b>Alivia a escota grande</b> (a grande quase a portilhar).</li>
+          <li><b>Roda a roda para sotavento</b> (para longe do vento) e <b>trava-a</b>.</li>
+          <li>Genoa e leme equilibram-se. Afina a grande até ela ficar quietinha, a ~50° do vento, a andar 1–2 nós e a abrir um <b>rasto</b> de água amaciada a barlavento.</li>
+        </ol>
+      </div>
+      <div class="posfig">
+        <svg viewBox="0 0 360 340" role="img" aria-label="Barco à capa: genoa à fala, grande aliviada, leme a sotavento e rasto a barlavento">
+          <g stroke="#7FA9B8" stroke-width="2.4" fill="#7FA9B8"><line x1="180" y1="16" x2="180" y2="56"/><path d="M180 62 l-7 -13 h14 z"/></g>
+          <text x="180" y="12" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#9fc0cc">VENTO</text>
+          <path d="M246 70 q44 64 26 152" fill="none" stroke="#3FA37C" stroke-opacity=".5" stroke-width="2" stroke-dasharray="2 6"/>
+          <text x="284" y="150" font-family="Spline Sans Mono" font-size="10.5" fill="#7fd0b3">rasto</text>
+          <g transform="rotate(-38 180 192)">
+            <path d="M180 96 C 214 130 220 196 208 280 C 202 292 190 296 180 296 C 170 296 158 292 152 280 C 140 196 146 130 180 96 Z" fill="#0c2734" stroke="#CBA14C" stroke-width="2"/>
+            <circle cx="180" cy="110" r="3" fill="#E0C282"/><circle cx="180" cy="206" r="4" fill="#E0C282"/>
+            <path d="M180 112 C 214 140 222 178 214 206 C 198 182 188 150 180 112 Z" fill="#F7FBFA" fill-opacity=".9" stroke="#cdd9da" stroke-width="1.4"/>
+            <path d="M180 206 C 168 232 168 256 174 276 C 184 256 186 232 180 206 Z" fill="#EFE7D4" fill-opacity=".5" stroke="#cdd9da" stroke-width="1.2"/>
+            <line x1="180" y1="296" x2="192" y2="312" stroke="#C8503F" stroke-width="3"/>
+          </g>
+          <text x="246" y="226" font-family="Spline Sans Mono" font-size="10.5" fill="#cfe0e3">genoa à fala</text>
+          <text x="48" y="248" font-family="Spline Sans Mono" font-size="10.5" fill="#e8d3a6">grande aliviada</text>
+          <text x="120" y="320" font-family="Spline Sans Mono" font-size="10.5" fill="#e0907f">leme a sotavento</text>
+          <g stroke="#7FA9B8" stroke-width="1.8" fill="#7FA9B8" opacity=".7"><line x1="116" y1="150" x2="92" y2="186"/><path d="M92 186 l11 -3 l-1 11 z"/></g>
+          <text x="60" y="146" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">deriva</text>
+        </svg>
+      </div>
+    </div>
+
+    <h3 style="font-size:24px;color:var(--foam);margin:54px 0 0">Mau tempo — reduzir e aguentar</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="num">&darr;</div>
+        <h3>Reduz cedo</h3>
+        <p>«O primeiro rizo mete-se quando te lembras dele.» Sequência: achatar (cunho, estai de popa, cunningham) &rarr; <b>1.º rizo</b> &rarr; reduzir/enrolar a genoa &rarr; <b>2.º rizo</b> &rarr; genoa de tempo (estai pequeno). Barco direito governa-se; sobrecarregado, orza e perde-se.</p>
+      </div>
+      <div class="card">
+        <div class="num">&asymp;</div>
+        <h3>As opções</h3>
+        <p><b>Capear</b> (à capa): estável, abre rasto — a 1.ª escolha com espaço. <b>Cinglar devagar</b>: grande bem rizada + estai pequeno, a furar o mar a barlavento. <b>Fugir a favor</b>: pano mínimo, a rebocar um <b>retardador</b> (drogue) pela popa, para não embicar nem atravessar. Evita ficar <b>atravessado e à matroca</b> em vagas que rebentam.</p>
+      </div>
+      <div class="card">
+        <div class="num">+</div>
+        <h3>A tripulação</h3>
+        <p>Todos <b>engatados</b> (arnês + linha de vida), coletes vestidos, escotilhas fechadas, tudo amarrado em baixo. Quartos de vigia curtos, gente quente e alimentada, VHF e EPIRB à mão. A Portucale é nobre — o limite costuma ser a tripulação, não o barco.</p>
+      </div>
+    </div>
+
+    <div class="split" style="align-items:start;margin-top:54px">
+      <div class="posfig">
+        <svg viewBox="0 0 360 320" role="img" aria-label="Ângulo às ondas: de viés sobe macio, de través é perigo, a favor pela alheta e a travar">
+          <g stroke="#5f93a6" stroke-width="2" fill="none" opacity=".5">
+            <path d="M10 42 q20 -12 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t30 0"/>
+            <path d="M10 76 q20 -12 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t30 0"/>
+            <path d="M10 110 q20 -12 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t30 0"/>
+          </g>
+          <g stroke="#7FA9B8" stroke-width="2.4" fill="#7FA9B8"><line x1="24" y1="30" x2="24" y2="104"/><path d="M24 110 l-6 -12 h12 z"/></g>
+          <text x="46" y="30" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">mar</text>
+          <circle cx="184" cy="200" r="7" fill="#CBA14C"/>
+          <g stroke="#3FA37C" stroke-width="4" fill="#3FA37C"><line x1="184" y1="200" x2="130" y2="134"/><path d="M130 134 l3 16 l13 -9 z"/></g>
+          <text x="92" y="120" font-family="Spline Sans Mono" font-size="11" fill="#7fd0b3">~30–45°</text>
+          <text x="80" y="134" font-family="Spline Sans Mono" font-size="10" fill="#7fd0b3">sobe macio</text>
+          <g stroke="#C8503F" stroke-width="4" fill="#C8503F"><line x1="184" y1="200" x2="268" y2="200"/><path d="M268 200 l-14 -7 v14 z"/></g>
+          <text x="278" y="196" font-family="Spline Sans Mono" font-size="11" fill="#e0907f">de través</text>
+          <text x="286" y="210" font-family="Spline Sans Mono" font-size="10" fill="#e0907f">NÃO</text>
+          <g stroke="#CBA14C" stroke-width="4" fill="#CBA14C"><line x1="184" y1="200" x2="132" y2="270"/><path d="M132 270 l15 -4 l-8 -13 z"/></g>
+          <text x="84" y="282" font-family="Spline Sans Mono" font-size="11" fill="#e0c282">a favor</text>
+          <text x="70" y="296" font-family="Spline Sans Mono" font-size="10" fill="#e0c282">pela alheta + trava</text>
+        </svg>
+      </div>
+      <div class="reassure">
+        <h3 style="font-size:24px;color:var(--foam);margin:0 0 10px">Como atacar as ondas</h3>
+        <p class="pull" style="font-size:clamp(20px,2.6vw,25px)">De través, nunca. A vaga ao través é o máximo rolamento — e o único ângulo onde uma rebentação te deita.</p>
+        <p><b>Contra o mar</b> (à bolina): não enfrentes a vaga de chapa a toda a força — bate, pára e parte coisas. Aponta <b>~30–45° à vaga</b>, de viés: sobe a face, alivia no cristo e controla a descida. Antes de uma crista a rebentar, <b>tira pé</b> (alivia/orza um pouco) para não saltar e bater na cava.</p>
+        <p><b>A favor do mar</b> (largo/popa): o perigo é correr de mais, enfiar a proa na vaga da frente ou <b>atravessar</b> (broach). Leva as vagas <b>pela alheta</b> — nem de popa cheia, nem de través — conduz a sério: acelera para descer e <b>trava</b> (retardador/cabos pela popa) se surfares perigosamente.</p>
+        <p style="color:#aebfc4"><b>Conforto:</b> escolher o ângulo e abrandar um nada muda tudo. E temporiza — as vagas vêm em séries, há sempre acalmias entre os grupos.</p>
       </div>
     </div>
   </div>
