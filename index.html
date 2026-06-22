@@ -262,6 +262,22 @@
   .g-third{grid-column:span 4;aspect-ratio:4/3;}
   .gcredit{margin-top:16px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:#7f97a0;letter-spacing:.01em;}
   .gcredit a{color:#9fb3bb;}
+
+  /* ---------- masonry gallery + lightbox ---------- */
+  .masonry{columns:4 240px;column-gap:14px;margin-top:42px;}
+  @media(max-width:1100px){.masonry{columns:3 220px;}}
+  @media(max-width:760px){.masonry{columns:2 150px;}}
+  .mphoto{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0a1c27;cursor:zoom-in;}
+  .mphoto img{width:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+  .mphoto:hover img{transform:scale(1.04);}
+  .mphoto figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;font-family:"Spline Sans Mono",monospace;font-size:11.5px;line-height:1.3;color:#eef4f3;background:linear-gradient(0deg,rgba(8,23,31,.92),rgba(8,23,31,.1) 80%,transparent);opacity:0;transition:opacity .3s;}
+  .mphoto:hover figcaption{opacity:1;}
+  @media(hover:none){.mphoto figcaption{opacity:1;font-size:10.5px;padding:18px 10px 8px;}}
+  .lbox{position:fixed;inset:0;z-index:120;background:rgba(8,23,31,.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out;}
+  .lbox.open{display:flex;}
+  .lbox img{max-width:92vw;max-height:84vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+  .lbox figcaption{margin-top:14px;font-family:"Spline Sans Mono",monospace;font-size:13px;color:var(--brass-soft);text-align:center;max-width:90vw;}
+  .lbclose{position:absolute;top:16px;right:20px;font-size:32px;line-height:1;color:#cfe3d8;background:none;border:none;cursor:pointer;}
   @media(max-width:760px){
     .g-wide,.g-tall,.g-third{grid-column:span 12;aspect-ratio:16/10;}
   }
@@ -1810,63 +1826,43 @@
   <div class="wrap reveal">
     <span class="eyebrow">Galeria · o Portucale</span>
     <h2 class="lead-h">É assim que ela é</h2>
-    <p class="sec-intro">Fotografias do próprio Portucale — na Marina de Leça e ao largo de Leixões. Casco baixo e clássico, quilha fixa com leme de patilhão, sloop de topo de mastro. O barco de verdade, em casa.</p>
-
-    <div class="gallery">
-      <figure class="gframe g-wide">
-        <img loading="lazy" alt="O Portucale fundeado em águas calmas"
-          src="fotos/portucale-fundeado.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>Fundeado, em águas calmas.</figcaption>
-      </figure>
-      <figure class="gframe g-tall">
-        <img loading="lazy" alt="O Portucale atracado na Marina de Leça, matrícula POL0003PE"
-          src="fotos/portucale-marina-proa.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>Na Marina de Leça · POL0003PE.</figcaption>
-      </figure>
-      <figure class="gframe g-third">
-        <img loading="lazy" alt="A bordo do Portucale sob pano"
-          src="fotos/portucale-a-bordo.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>A bordo, sob pano.</figcaption>
-      </figure>
-      <figure class="gframe g-third">
-        <img loading="lazy" alt="Golden hour à saída de Leixões, com o farol ao fundo"
-          src="fotos/portucale-golden-hour.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>Golden hour — farol de Leixões ao fundo.</figcaption>
-      </figure>
-      <figure class="gframe g-third">
-        <img loading="lazy" alt="Fim de tarde no poço do Portucale"
-          src="fotos/portucale-fim-tarde.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>Fim de tarde no poço.</figcaption>
-      </figure>
-      <figure class="gframe g-wide">
-        <img loading="lazy" alt="O Portucale atracado de popa ao pontão"
-          src="fotos/portucale-pontao.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>De popa ao pontão, em casa.</figcaption>
-      </figure>
-      <figure class="gframe g-tall">
-        <img loading="lazy" alt="Manhã de nevoeiro na marina, a bordo do Portucale"
-          src="fotos/portucale-nevoeiro.jpg"
-          onerror="this.closest('.gframe').classList.add('broken')" />
-        <span class="goff">↯ imagem indisponível</span>
-        <figcaption>Manhã de nevoeiro na marina.</figcaption>
-      </figure>
+    <p class="sec-intro">Fotografias do próprio Portucale e da sua tripulação — Leixões, o Douro, a costa e as Rias, do sol ao nevoeiro, do verão ao inverno. Toca numa foto para a ampliar.</p>
+    <div class="masonry">
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-por-sol-mar.jpg" alt="Portucale — Pôr do sol no mar" /><figcaption>Pôr do sol no mar</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-regresso-por-sol.jpg" alt="Portucale — Regresso ao fim do dia, Leixões" /><figcaption>Regresso ao fim do dia, Leixões</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-fundeado.jpg" alt="Portucale — Fundeado, em águas calmas" /><figcaption>Fundeado, em águas calmas</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-marina-proa.jpg" alt="Portucale — Na Marina de Leça · POL0003PE" /><figcaption>Na Marina de Leça · POL0003PE</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-tripulacao-largo.jpg" alt="Portucale — A bordo, em equipa" /><figcaption>A bordo, em equipa</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-golden-hour.jpg" alt="Portucale — Golden hour — farol de Leixões" /><figcaption>Golden hour — farol de Leixões</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-fora-agua.jpg" alt="Portucale — Fora de água: quilha e leme de patilhão" /><figcaption>Fora de água: quilha e leme de patilhão</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-travel-lift.jpg" alt="Portucale — No travel-lift, manutenção anual" /><figcaption>No travel-lift, manutenção anual</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-a-bordo.jpg" alt="Portucale — A bordo, sob pano" /><figcaption>A bordo, sob pano</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-mar-espelho.jpg" alt="Portucale — Mar de espelho ao leme" /><figcaption>Mar de espelho ao leme</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-sob-retranca.jpg" alt="Portucale — Sob a retranca, costa à vista" /><figcaption>Sob a retranca, costa à vista</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-petisco.jpg" alt="Portucale — Petisco a bordo, ao abrigo do quebra-mar" /><figcaption>Petisco a bordo, ao abrigo do quebra-mar</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-familia-pa.jpg" alt="Portucale — Pequeno-almoço em família, a bordo" /><figcaption>Pequeno-almoço em família, a bordo</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-fim-tarde.jpg" alt="Portucale — Fim de tarde no poço" /><figcaption>Fim de tarde no poço</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-dia-cinzento.jpg" alt="Portucale — Dia cinzento, boa companhia" /><figcaption>Dia cinzento, boa companhia</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-ao-leme-acenar.jpg" alt="Portucale — Ao leme, a acenar" /><figcaption>Ao leme, a acenar</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-zarpar-leixoes.jpg" alt="Portucale — Prontos a zarpar de Leixões" /><figcaption>Prontos a zarpar de Leixões</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-inverno-duro.jpg" alt="Portucale — Inverno duro, sorrisos na mesma" /><figcaption>Inverno duro, sorrisos na mesma</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-jantar-bordo.jpg" alt="Portucale — Jantar a bordo ao anoitecer" /><figcaption>Jantar a bordo ao anoitecer</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-sol-inverno.jpg" alt="Portucale — Sol de inverno ao leme" /><figcaption>Sol de inverno ao leme</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-cao-colete.jpg" alt="Portucale — Até o cão alinha — de colete" /><figcaption>Até o cão alinha — de colete</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-toldo-farol.jpg" alt="Portucale — À sombra do toldo, farol à vista" /><figcaption>À sombra do toldo, farol à vista</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-pontao.jpg" alt="Portucale — De popa ao pontão, em casa" /><figcaption>De popa ao pontão, em casa</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-nevoeiro.jpg" alt="Portucale — Manhã de nevoeiro na marina" /><figcaption>Manhã de nevoeiro na marina</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-pronto-largar.jpg" alt="Portucale — Pronto a largar, na marina" /><figcaption>Pronto a largar, na marina</figcaption></figure>
+      <figure class="mphoto"><img loading="lazy" src="fotos/portucale-equipa-marina.jpg" alt="Portucale — A equipa, na marina" /><figcaption>A equipa, na marina</figcaption></figure>
     </div>
-    <p class="gcredit">Fotografias do próprio Portucale, na Marina de Leça (Leixões) e ao largo da costa.</p>
+    <p class="gcredit">Fotografias do próprio Portucale e dos seus tripulantes, ao largo de Leixões e da costa norte.</p>
   </div>
 </section>
-
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+  <button class="lbclose" id="lbclose" type="button" aria-label="Fechar">&times;</button>
+  <img id="lboxImg" src="" alt="" />
+  <figcaption id="lboxCap"></figcaption>
+</div>
 
 <!-- ===================== HISTORY ===================== -->
 <section class="pad" id="historia" style="background:var(--navy)">
@@ -2247,6 +2243,22 @@
     menuPanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
     menuPanel.addEventListener('click', function(e){ if(e.target === menuPanel) closeMenu(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu(); });
+  }
+  /* ---- gallery lightbox ---- */
+  var lb=document.getElementById('lbox');
+  if(lb){
+    var lbImg=document.getElementById('lboxImg'), lbCap=document.getElementById('lboxCap');
+    document.querySelectorAll('.masonry .mphoto img').forEach(function(im){
+      im.addEventListener('click', function(){
+        lbImg.src=im.getAttribute('src'); lbImg.alt=im.alt||'';
+        var c=im.parentElement.querySelector('figcaption');
+        lbCap.textContent=c?c.textContent:'';
+        lb.classList.add('open'); document.body.style.overflow='hidden';
+      });
+    });
+    var closeLb=function(){lb.classList.remove('open'); document.body.style.overflow=''; lbImg.src='';};
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) closeLb(); });
   }
 })();
 </script>
