@@ -4,7 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Portucale · Dufour 34 — Conhece o teu veleiro</title>
-<meta name="description" content="Tudo o que precisas de saber sobre o Portucale, um veleiro Dufour 34: quão forte é, o que seria preciso para virar, e a inclinação ideal à bolina. Para quem navega pela primeira vez." />
+<meta name="description" content="Tudo o que precisas de saber sobre o Portucale, um veleiro Dufour 34: quão forte é, o que seria preciso para virar, a inclinação ideal à bolina e como mudar de bordo. Para quem navega pela primeira vez." />
+<meta name="author" content="Portucale — Associação de Navegadores Oceânicos" />
+<meta name="theme-color" content="#08171F" />
+
+<!-- Open Graph (WhatsApp · Facebook · LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Portucale · Dufour 34" />
+<meta property="og:title" content="Portucale — Dufour 34. Conhece o teu veleiro." />
+<meta property="og:description" content="Feito para inclinar — e voltar sempre a endireitar-se. Quão forte é, o que seria preciso para virar, a bolina ideal e como mudar de bordo. Para quem navega pela primeira vez." />
+<meta property="og:url" content="https://obrunodegouveia.github.io/portucale/" />
+<meta property="og:image" content="https://obrunodegouveia.github.io/portucale/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="pt_PT" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Portucale — Dufour 34. Conhece o teu veleiro." />
+<meta name="twitter:description" content="Feito para inclinar — e voltar sempre a endireitar-se. Para quem navega pela primeira vez." />
+<meta name="twitter:image" content="https://obrunodegouveia.github.io/portucale/og.png" />
+
+<!-- Favicon (inline) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='17' fill='%230c2230' stroke='%23CBA14C' stroke-width='2.6'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%233FA37C'/%3E%3Cline x1='20' y1='3' x2='20' y2='9' stroke='%23CBA14C' stroke-width='2.4'/%3E%3Cline x1='20' y1='31' x2='20' y2='37' stroke='%23CBA14C' stroke-width='2.4'/%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -221,6 +244,27 @@
     .g-wide,.g-tall,.g-third{grid-column:span 12;aspect-ratio:16/10;}
   }
 
+  /* ---------- manoeuvres ---------- */
+  .maneuvers{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;}
+  @media(max-width:860px){.maneuvers{grid-template-columns:1fr;}}
+  .manuf{background:linear-gradient(180deg,#0f2937,#0b1f2a);border:1px solid var(--line);border-radius:20px;padding:24px 24px 26px;}
+  .manuf svg{width:100%;height:auto;display:block;border-radius:12px;background:radial-gradient(90% 80% at 50% 30%,rgba(127,169,184,.08),transparent 70%);}
+  .windbadge{display:inline-flex;align-items:center;gap:8px;font-family:"Spline Sans Mono",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:6px 12px;border-radius:999px;margin:18px 0 12px;}
+  .windbadge .dot{width:8px;height:8px;border-radius:50%;background:currentColor;}
+  .wb-front{color:var(--star);background:rgba(63,163,124,.14);}
+  .wb-back{color:var(--brass);background:rgba(203,161,76,.16);}
+  .manuf h3{font-size:23px;margin:0 0 8px;}
+  .manuf .desc{font-size:15.5px;color:#C4D5DA;margin:0 0 16px;}
+  .steps{list-style:none;counter-reset:s;padding:0;margin:0 0 18px;}
+  .steps li{counter-increment:s;position:relative;padding:7px 0 7px 38px;font-size:15px;color:#DCE7EA;border-bottom:1px solid rgba(231,222,200,.07);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:7px;width:24px;height:24px;border-radius:50%;
+    font-family:"Spline Sans Mono",monospace;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+    color:var(--brass);border:1px solid rgba(203,161,76,.4);}
+  .safe{border-left:3px solid var(--brass);padding:6px 0 6px 16px;font-size:14.5px;color:#C4D5DA;}
+  .safe b{color:var(--brass-soft);font-weight:600;}
+  .goldrule{margin-top:40px;text-align:center;font-family:"Bricolage Grotesque";font-weight:600;font-size:clamp(20px,3vw,27px);color:var(--brass);max-width:26ch;margin-left:auto;margin-right:auto;line-height:1.25;}
+
   /* ---------- closing checklist ---------- */
   .checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:38px;max-width:820px;}
   @media(max-width:680px){.checks{grid-template-columns:1fr;}}
@@ -268,6 +312,7 @@
       <a href="#sentir">Sente a inclinação</a>
       <a href="#forte">Quão forte é</a>
       <a href="#bolina">Bolina ideal</a>
+      <a href="#bordo">Mudar de bordo</a>
       <a href="#vento">Quando sair</a>
     </nav>
   </div>
@@ -609,6 +654,91 @@
         <p>Se alguma vez te sentires sobrecarregado à bolina, <strong>arribar</strong> ligeiramente (apontar mais para longe do vento) é o gesto que tira tensão de tudo de uma vez. Saber isto é saber sair de qualquer aperto.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== CHANGING TACK ===================== -->
+<section class="paper paper-grain pad" id="bordo">
+  <div class="wrap reveal">
+    <span class="eyebrow">Manobras · mudar de bordo</span>
+    <h2 class="lead-h" style="color:var(--ink)">As duas viragens: por davante e cambar</h2>
+    <p class="sec-intro">Para zigzaguear no mar, mudas o lado de onde recebes o vento — mudas de bordo. Há exatamente duas formas de o fazer, e a diferença está só numa coisa: por onde passa o vento. Pela <strong>proa</strong> (à frente) ou pela <strong>popa</strong> (atrás). Saber distinguir isto é metade do à-vontade aos comandos.</p>
+
+    <div class="maneuvers">
+      <!-- TACK -->
+      <div class="manuf">
+        <svg viewBox="0 0 300 250" role="img" aria-label="Diagrama de virar por davante: a proa cruza o vento">
+          <!-- wind from top -->
+          <g stroke="#7FA9B8" stroke-width="2.2" fill="#7FA9B8">
+            <line x1="150" y1="12" x2="150" y2="44"/><path d="M150 50 l-6 -11 h12 z"/>
+            <text x="150" y="10" text-anchor="middle" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">VENTO</text>
+          </g>
+          <!-- no-go cone -->
+          <path d="M180 110 L150 58 L120 110 Z" fill="#C8503F" fill-opacity=".10" stroke="#C8503F" stroke-opacity=".3" stroke-dasharray="3 5"/>
+          <!-- starboard leg (green) up-right to tack point -->
+          <g stroke="#3FA37C" stroke-width="3" fill="#3FA37C">
+            <line x1="78" y1="232" x2="146" y2="118"/><path d="M150 110 l-9 4 1 -10 z"/>
+          </g>
+          <!-- port leg (red) from tack point up-left -->
+          <g stroke="#C8503F" stroke-width="3" fill="#C8503F" stroke-opacity=".85">
+            <line x1="150" y1="112" x2="92" y2="36"/><path d="M88 30 l9 1 -3 9 z"/>
+          </g>
+          <!-- tack point -->
+          <circle cx="150" cy="112" r="6" fill="#EFE7D4" stroke="#0c2230" stroke-width="2"/>
+          <text x="150" y="150" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#cfe3d8">a proa cruza</text>
+          <text x="150" y="164" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#cfe3d8">o vento</text>
+        </svg>
+        <span class="windbadge wb-front"><span class="dot"></span>Vento pela proa</span>
+        <h3>Virar por davante</h3>
+        <p class="desc">Usa-se <strong>à bolina</strong>, a subir contra o vento. A proa cruza o eixo do vento e, por um instante, as velas ficam sem vento e adejam. É por isso a viragem <strong>calma e segura</strong>: a retranca passa devagar e quase sem força.</p>
+        <ol class="steps">
+          <li>Vê que está tudo livre e escolhe o novo rumo (cerca de 90° para o outro lado).</li>
+          <li>Avisa: «Preparar para virar por davante!» — tripulação pronta nas escotas da genoa.</li>
+          <li>«Virar!» — leme a barlavento, vira com firmeza, sem deixar o barco parar.</li>
+          <li>A proa passa pelo vento: larga a escota de sotavento e caça a do novo bordo.</li>
+          <li>Afina no novo bordo e assenta nos ~15–20° de adornamento.</li>
+        </ol>
+        <p class="safe"><b>Não vires devagar de mais.</b> Se perderes velocidade a meio, ficas «em ferro» (parado, a apontar ao vento). Mantém andamento e vira com decisão — sai sempre.</p>
+      </div>
+
+      <!-- GYBE -->
+      <div class="manuf">
+        <svg viewBox="0 0 300 250" role="img" aria-label="Diagrama de cambar: a popa cruza o vento">
+          <!-- wind from top (behind) -->
+          <g stroke="#7FA9B8" stroke-width="2.2" fill="#7FA9B8">
+            <line x1="150" y1="12" x2="150" y2="44"/><path d="M150 50 l-6 -11 h12 z"/>
+            <text x="150" y="10" text-anchor="middle" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">VENTO</text>
+          </g>
+          <!-- starboard broad reach (green) down-right to gybe point -->
+          <g stroke="#3FA37C" stroke-width="3" fill="#3FA37C">
+            <line x1="80" y1="60" x2="144" y2="158"/><path d="M148 164 l-9 -1 3 -9 z"/>
+          </g>
+          <!-- port broad reach (red) from gybe point down-left -->
+          <g stroke="#C8503F" stroke-width="3" fill="#C8503F" stroke-opacity=".85">
+            <line x1="150" y1="160" x2="92" y2="224"/><path d="M88 230 l1 -9 9 3 z"/>
+          </g>
+          <!-- boom swing indicator -->
+          <path d="M128 150 q22 -14 44 0" fill="none" stroke="#E0C282" stroke-width="2" stroke-dasharray="2 4"/>
+          <!-- gybe point -->
+          <circle cx="150" cy="160" r="6" fill="#EFE7D4" stroke="#0c2230" stroke-width="2"/>
+          <text x="150" y="196" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e8d3a6">a popa cruza</text>
+          <text x="150" y="210" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e8d3a6">o vento</text>
+        </svg>
+        <span class="windbadge wb-back"><span class="dot"></span>Vento pela popa</span>
+        <h3>Cambar <span style="font-weight:500;font-size:16px;color:#7a8b91">(virar por de trás)</span></h3>
+        <p class="desc">Usa-se em <strong>empopada ou largo</strong>, a descer com o vento atrás. A popa cruza o eixo do vento e as velas ficam <strong>sempre cheias</strong> — por isso a retranca atravessa com força. É o único momento de «cuidado com a cabeça» a bordo. Feito com método, é suave.</p>
+        <ol class="steps">
+          <li>Avisa bem alto: «Preparar para cambar!» — todos atentos, cabeças baixas, olho na retranca.</li>
+          <li>Caça a escota grande a fundo, trazendo a retranca para o centro (assim viaja pouco).</li>
+          <li>Faz a popa passar pelo vento, virando o leme de forma suave e contínua.</li>
+          <li>Quando a retranca passa para o outro lado, larga a escota grande de forma controlada.</li>
+          <li>Passa a genoa para o novo bordo e assenta no rumo.</li>
+        </ol>
+        <p class="safe"><b>A regra de ouro: caça primeiro, larga depois.</b> O perigo é a cambada acidental (retranca solta a voar). Com vento forte e em dúvida, dá antes uma volta grande e vira por davante — a «cambada de galinha». Não há vergonha nenhuma nisso.</p>
+      </div>
+    </div>
+
+    <p class="goldrule">À bolina, viras por davante. Em empopada, cambas. O barco diz-te qual precisas — só tens de ouvir de onde vem o vento.</p>
   </div>
 </section>
 
