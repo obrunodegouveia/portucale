@@ -273,11 +273,18 @@
   .mphoto figcaption{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;font-family:"Spline Sans Mono",monospace;font-size:11px;line-height:1.25;color:#fff;background:linear-gradient(0deg,rgba(8,23,31,.6),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none;}
   .mphoto:hover figcaption{opacity:1;}
   @media(hover:none){.mphoto figcaption{display:none;}}
-  .lbox{position:fixed;inset:0;z-index:120;background:rgba(8,23,31,.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out;}
+  .lbox{position:fixed;inset:0;z-index:120;background:rgba(8,23,31,.96);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;}
   .lbox.open{display:flex;}
-  .lbox img{max-width:92vw;max-height:84vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
-  .lbox figcaption{margin-top:14px;font-family:"Spline Sans Mono",monospace;font-size:13px;color:var(--brass-soft);text-align:center;max-width:90vw;}
-  .lbclose{position:absolute;top:16px;right:20px;font-size:32px;line-height:1;color:#cfe3d8;background:none;border:none;cursor:pointer;}
+  .lbstage{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:92vw;max-height:86vh;touch-action:pan-y;}
+  .lbstage img{max-width:92vw;max-height:80vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);user-select:none;-webkit-user-drag:none;transition:opacity .22s ease;}
+  .lbstage img.fading{opacity:0;}
+  .lbstage figcaption{margin-top:14px;font-family:"Spline Sans Mono",monospace;font-size:13px;color:var(--brass-soft);text-align:center;max-width:90vw;}
+  .lbclose{position:absolute;top:14px;right:20px;font-size:34px;line-height:1;color:#cfe3d8;background:none;border:none;cursor:pointer;z-index:2;}
+  .lbnav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(207,227,216,.3);background:rgba(8,23,31,.55);color:#eaf2ee;font-size:30px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,color .2s;z-index:2;}
+  .lbnav:hover{background:rgba(203,161,76,.9);border-color:var(--brass);color:#08171f;}
+  .lbprev{left:14px;} .lbnext{right:14px;}
+  .lbcount{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.08em;color:#9fb3bb;}
+  @media(max-width:600px){.lbnav{width:42px;height:42px;font-size:24px;}.lbprev{left:6px;}.lbnext{right:6px;}.lbstage img{max-height:72vh;}}
   @media(max-width:760px){
     .g-wide,.g-tall,.g-third{grid-column:span 12;aspect-ratio:16/10;}
   }
@@ -1858,10 +1865,15 @@
     <p class="gcredit">Fotografias do próprio Portucale e dos seus tripulantes, ao largo de Leixões e da costa norte.</p>
   </div>
 </section>
-<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
-  <button class="lbclose" id="lbclose" type="button" aria-label="Fechar">&times;</button>
-  <img id="lboxImg" src="" alt="" />
-  <figcaption id="lboxCap"></figcaption>
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Galeria do Portucale">
+  <button class="lbclose" id="lbClose" type="button" aria-label="Fechar">&times;</button>
+  <button class="lbnav lbprev" id="lbPrev" type="button" aria-label="Anterior">&#8249;</button>
+  <figure class="lbstage" id="lbStage">
+    <img id="lboxImg" src="" alt="" draggable="false" />
+    <figcaption id="lboxCap"></figcaption>
+  </figure>
+  <button class="lbnav lbnext" id="lbNext" type="button" aria-label="Seguinte">&#8250;</button>
+  <span class="lbcount" id="lbCount"></span>
 </div>
 
 <!-- ===================== HISTORY ===================== -->
@@ -2244,21 +2256,60 @@
     menuPanel.addEventListener('click', function(e){ if(e.target === menuPanel) closeMenu(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu(); });
   }
-  /* ---- gallery lightbox ---- */
+  /* ---- gallery lightbox carousel ---- */
   var lb=document.getElementById('lbox');
   if(lb){
-    var lbImg=document.getElementById('lboxImg'), lbCap=document.getElementById('lboxCap');
-    document.querySelectorAll('.mphoto img').forEach(function(im){
-      im.addEventListener('click', function(){
-        lbImg.src=im.getAttribute('src'); lbImg.alt=im.alt||'';
-        var c=im.parentElement.querySelector('figcaption');
-        lbCap.textContent=c?c.textContent:'';
-        lb.classList.add('open'); document.body.style.overflow='hidden';
-      });
+    var lbImg=document.getElementById('lboxImg'),
+        lbCap=document.getElementById('lboxCap'),
+        lbCount=document.getElementById('lbCount'),
+        stage=document.getElementById('lbStage'),
+        thumbs=Array.prototype.slice.call(document.querySelectorAll('.mphoto img')),
+        slides=thumbs.map(function(im){
+          var c=im.parentElement.querySelector('figcaption');
+          return {src:im.getAttribute('src'), alt:im.alt||'', cap:c?c.textContent:''};
+        }),
+        cur=0;
+    function show(i){
+      cur=(i+slides.length)%slides.length;
+      var s=slides[cur];
+      lbImg.classList.add('fading');
+      setTimeout(function(){
+        lbImg.onload=function(){ lbImg.classList.remove('fading'); };
+        lbImg.src=s.src; lbImg.alt=s.alt;
+        if(lbImg.complete) lbImg.classList.remove('fading');
+        lbCap.textContent=s.cap;
+        lbCount.textContent=(cur+1)+' / '+slides.length;
+      },120);
+    }
+    function openLb(i){ show(i); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    thumbs.forEach(function(im,i){ im.addEventListener('click',function(){ openLb(i); }); });
+    document.getElementById('lbClose').addEventListener('click',closeLb);
+    document.getElementById('lbNext').addEventListener('click',function(){ show(cur+1); });
+    document.getElementById('lbPrev').addEventListener('click',function(){ show(cur-1); });
+    lb.addEventListener('click',function(e){ if(e.target===lb) closeLb(); });
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') closeLb();
+      else if(e.key==='ArrowRight') show(cur+1);
+      else if(e.key==='ArrowLeft') show(cur-1);
     });
-    var closeLb=function(){lb.classList.remove('open'); document.body.style.overflow=''; lbImg.src='';};
-    lb.addEventListener('click', closeLb);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) closeLb(); });
+    var x0=null;
+    stage.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+    stage.addEventListener('touchend',function(e){
+      if(x0===null) return;
+      var dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40) show(cur+(dx<0?1:-1));
+      x0=null;
+    });
+    var mx0=null;
+    stage.addEventListener('mousedown',function(e){ mx0=e.clientX; });
+    stage.addEventListener('mouseup',function(e){
+      if(mx0===null) return;
+      var dx=e.clientX-mx0;
+      if(Math.abs(dx)>50) show(cur+(dx<0?1:-1));
+      mx0=null;
+    });
   }
 })();
 </script>
