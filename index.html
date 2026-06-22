@@ -76,8 +76,9 @@
   .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
   .brand{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque";font-weight:700;letter-spacing:.02em;}
   .brand .bub{width:26px;height:26px;flex:0 0 auto;}
-  nav.links{display:flex;gap:26px;}
-  nav.links a{font-size:13.5px;text-decoration:none;color:var(--chart);opacity:.78;transition:opacity .2s,color .2s;}
+  nav.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;max-width:78%;}
+  nav.links::-webkit-scrollbar{display:none;}
+  nav.links a{font-size:13.5px;text-decoration:none;color:var(--chart);opacity:.78;transition:opacity .2s,color .2s;flex:0 0 auto;white-space:nowrap;}
   nav.links a:hover{opacity:1;color:var(--brass-soft);}
   @media(max-width:760px){nav.links{display:none;}}
 
@@ -326,6 +327,25 @@
   .clitem.done .cltext{color:#7f97a0;}
   .clnote{margin-top:24px;font-size:13px;color:#7f97a0;font-family:"Spline Sans Mono",monospace;}
 
+  /* ---------- radio language toggle ---------- */
+  .langtog{display:inline-flex;align-items:center;gap:6px;margin-top:26px;flex-wrap:wrap;}
+  .ltlabel{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7f97a0;margin-right:8px;}
+  .lt{font-family:"Spline Sans Mono",monospace;font-size:13px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(231,222,200,.04);color:#9fb3bb;cursor:pointer;transition:background .2s,color .2s,border-color .2s;}
+  .lt:hover{color:var(--foam);}
+  .lt.active{background:var(--brass);color:var(--ink);border-color:var(--brass);font-weight:600;}
+  .lt:focus-visible{outline:2px solid var(--brass-soft);outline-offset:2px;}
+  .radio-cards .lang-en{display:none;}
+  .radio-cards[data-lang="en"] .lang-pt{display:none;}
+  .radio-cards[data-lang="en"] .lang-en{display:block;}
+  .gl i{color:#9fb3bb;font-style:italic;}
+
+  /* ---------- sinking culprits list ---------- */
+  .clist{list-style:none;padding:0;margin:20px 0 0;}
+  .clist li{position:relative;padding:11px 0 11px 28px;border-bottom:1px solid var(--line);font-size:15.5px;color:#DCE7EA;line-height:1.5;}
+  .clist li:last-child{border-bottom:none;}
+  .clist li:before{content:"";position:absolute;left:2px;top:18px;width:9px;height:9px;border:2px solid var(--port);transform:rotate(45deg);}
+  .clist li b{color:var(--brass-soft);font-weight:600;}
+
   /* ---------- closing checklist ---------- */
   .checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:38px;max-width:820px;}
   @media(max-width:680px){.checks{grid-template-columns:1fr;}}
@@ -377,6 +397,7 @@
       <a href="#vento">Vento</a>
       <a href="#radio">Rádio</a>
       <a href="#mob">Homem ao mar</a>
+      <a href="#afunda">Afundar?</a>
       <a href="#check">Checklist</a>
     </nav>
   </div>
@@ -840,23 +861,41 @@
     </div>
     <p class="gcredit">Confirma sempre o canal da tua marina e do porto — podem mudar. No mar, mantém escuta no 16.</p>
 
-    <div class="radio-cards">
+    <div class="langtog" role="group" aria-label="Idioma das mensagens de rádio">
+      <span class="ltlabel">Mensagens em</span>
+      <button class="lt active" type="button" data-setlang="pt">Português</button>
+      <button class="lt" type="button" data-setlang="en">English</button>
+    </div>
+
+    <div class="radio-cards" data-lang="pt">
       <!-- MARINA -->
       <div class="rcard">
         <h3>Chamar a Marina <span class="chtag">CANAL 09</span></h3>
         <p class="when">À chegada (pedir lugar), à partida, ou para serviços (água, combustível).</p>
-        <div class="rt">
+        <div class="rt lang-pt">
           <span class="lead">«Marina de Leça, Marina de Leça,</span><br>
           aqui <span class="lead">Portucale, Portucale.</span><br>
           <span class="br">Escuto.»</span>
         </div>
-        <div class="rt fill">— respondem e confirmam o canal de trabalho —</div>
-        <div class="rt">
+        <div class="rt lang-en">
+          <span class="lead">“Marina de Leça, Marina de Leça,</span><br>
+          this is <span class="lead">Portucale, Portucale.</span><br>
+          <span class="br">Over.”</span>
+        </div>
+        <div class="rt fill lang-pt">— respondem e confirmam o canal de trabalho —</div>
+        <div class="rt fill lang-en">— they reply and confirm the working channel —</div>
+        <div class="rt lang-pt">
           «Marina, aqui Portucale.<br>
           Veleiro de 10 metros, calado 1,80.<br>
           Chegada prevista às 18h00,<br>
           solicito lugar de atracação.<br>
           <span class="br">Escuto.»</span>
+        </div>
+        <div class="rt lang-en">
+          “Marina, this is Portucale.<br>
+          A 10-metre sailing yacht, draft 1.8 metres.<br>
+          ETA 18:00, requesting a berth.<br>
+          <span class="br">Over.”</span>
         </div>
         <p class="rnote"><b>Diz sempre:</b> nome do barco, comprimento e calado, hora prevista, e o que precisas. Devagar e claro.</p>
       </div>
@@ -865,15 +904,25 @@
       <div class="rcard">
         <h3>Chamar outro barco <span class="chtag">CANAL 16 → trabalho</span></h3>
         <p class="when">Coordenar um cruzamento, uma manobra, ou falar com um amigo.</p>
-        <div class="rt">
+        <div class="rt lang-pt">
           <span class="lead">«Vendaval, Vendaval,</span><br>
           aqui <span class="lead">Portucale, Portucale,</span><br>
           no canal 16. <span class="br">Escuto.»</span>
         </div>
-        <div class="rt">
+        <div class="rt lang-en">
+          <span class="lead">“Vendaval, Vendaval,</span><br>
+          this is <span class="lead">Portucale, Portucale,</span><br>
+          on channel 16. <span class="br">Over.”</span>
+        </div>
+        <div class="rt lang-pt">
           «Vendaval, aqui Portucale.<br>
           Mude para o canal 72.<br>
           <span class="br">Escuto.»</span>
+        </div>
+        <div class="rt lang-en">
+          “Vendaval, this is Portucale.<br>
+          Switch to channel 72.<br>
+          <span class="br">Over.”</span>
         </div>
         <p class="rnote"><b>Não sabes o nome dele?</b> Descreve a posição: «Veleiro a sotavento da minha proa, aqui Portucale…». No fim de tudo, encerra com <b>«Terminado.»</b></p>
       </div>
@@ -885,7 +934,7 @@
         <div class="rgrid2">
           <div>
             <p class="rnote" style="margin-bottom:10px"><span class="chtag red">MEDÊ (Mayday)</span> &nbsp;Perigo grave e iminente — vida em risco, ajuda imediata. Afundamento, incêndio, homem ao mar, ferido grave.</p>
-            <div class="rt">
+            <div class="rt lang-pt">
               <span class="red">«MEDÊ, MEDÊ, MEDÊ.</span><br>
               Aqui Portucale, Portucale, Portucale. <span class="fill">(MMSI)</span><br>
               <span class="red">MEDÊ Portucale.</span><br>
@@ -895,10 +944,20 @@
               Necessito de assistência imediata.<br>
               <span class="br">Escuto.»</span>
             </div>
+            <div class="rt lang-en">
+              <span class="red">“MAYDAY, MAYDAY, MAYDAY.</span><br>
+              This is Portucale, Portucale, Portucale. <span class="fill">(call sign / MMSI)</span><br>
+              <span class="red">MAYDAY Portucale.</span><br>
+              My position is <span class="fill">[lat/long, or bearing and distance from a point].</span><br>
+              Nature of distress: <span class="fill">[e.g. taking on water, sinking].</span><br>
+              <span class="fill">[N]</span> persons on board.<br>
+              I require immediate assistance.<br>
+              <span class="br">Over.”</span>
+            </div>
           </div>
           <div>
             <p class="rnote" style="margin-bottom:10px"><span class="chtag">PANE-PANE (Pan-Pan)</span> &nbsp;Situação séria, mas <b>sem</b> perigo imediato de vida. Motor avariado e à deriva, problema que pode agravar.</p>
-            <div class="rt">
+            <div class="rt lang-pt">
               «PANE-PANE, PANE-PANE, PANE-PANE.<br>
               Todas as estações, todas as estações, todas as estações.<br>
               Aqui Portucale, Portucale, Portucale. <span class="fill">(MMSI)</span><br>
@@ -908,6 +967,16 @@
               Solicito reboque / assistência.<br>
               <span class="br">Escuto.»</span>
             </div>
+            <div class="rt lang-en">
+              “PAN-PAN, PAN-PAN, PAN-PAN.<br>
+              All stations, all stations, all stations.<br>
+              This is Portucale, Portucale, Portucale. <span class="fill">(MMSI)</span><br>
+              My position is <span class="fill">[…].</span><br>
+              Engine failure, drifting,<br>
+              no immediate danger to life.<br>
+              I require a tow / assistance.<br>
+              <span class="br">Over.”</span>
+            </div>
           </div>
         </div>
         <p class="rnote"><b>Mantém a calma e fica à escuta</b> — não desligues. Em Portugal, a chamada é ouvida pelo MRCC, pelas estações costeiras e por todos os barcos próximos. Repete a posição. Em terra, complementa com o <b>112</b>. Usa MEDÊ só em perigo real — alarmes falsos são ilegais.</p>
@@ -915,12 +984,12 @@
     </div>
 
     <div class="glossary">
-      <span class="gl"><b>Escuto</b> — terminei, aguardo resposta</span>
-      <span class="gl"><b>Terminado</b> — conversa encerrada</span>
-      <span class="gl"><b>Recebido</b> — mensagem recebida</span>
-      <span class="gl"><b>Repita</b> — diz de novo</span>
-      <span class="gl"><b>Afirmativo / Negativo</b></span>
-      <span class="gl"><b>Aguarde</b> — espera um momento</span>
+      <span class="gl"><b>Escuto</b> — aguardo resposta · <i>over</i></span>
+      <span class="gl"><b>Terminado</b> — conversa encerrada · <i>out</i></span>
+      <span class="gl"><b>Recebido</b> — mensagem recebida · <i>roger / received</i></span>
+      <span class="gl"><b>Repita</b> — diz de novo · <i>say again</i></span>
+      <span class="gl"><b>Afirmativo / Negativo</b> · <i>affirmative / negative</i></span>
+      <span class="gl"><b>Aguarde</b> — espera · <i>stand by</i></span>
       <span class="gl"><b>Soletra:</b> Portucale = Papa-Oscar-Romeo-Tango-Uniform-Charlie-Alfa-Lima-Echo</span>
     </div>
   </div>
@@ -960,6 +1029,66 @@
       </div>
     </div>
     <p class="mobpull">Atira · Aponta · Marca · Regressa — por esta ordem, sempre.</p>
+  </div>
+</section>
+
+<!-- ===================== SINKING RISK ===================== -->
+<section class="pad" id="afunda" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Segurança · entrada de água</span>
+    <h2 class="lead-h">O barco pode afundar? O que dizem os números.</h2>
+    <p class="sec-intro">A pergunta assusta — a resposta tranquiliza quando se olham os dados. Um veleiro lastrado, de casco maciço de fibra como o Portucale, quase nunca afunda a navegar. E quando um barco afunda, raramente é o casco a partir-se: é quase sempre um buraco pequeno, já existente, por onde a água entra devagar.</p>
+
+    <div class="cards">
+      <div class="card"><div class="num">4 : 1</div><h3>Quase sempre parado</h3><p>Por cada barco que afunda no mar, cerca de <b>quatro afundam atracados</b>, parados no cais — não a navegar.</p></div>
+      <div class="card"><div class="num">~50%</div><h3>Um buraco pequeno</h3><p>Metade dos afundamentos no cais começa numa <b>válvula de fundo ou passa-casco</b> abaixo de água — muitas vezes no bucim do veio.</p></div>
+      <div class="card"><div class="num">~6%</div><h3>O casco aguenta</h3><p>Só uma pequena fração dos afundamentos a navegar vem de <b>falha estrutural do casco</b>. O casco em si quase nunca é o problema.</p></div>
+    </div>
+
+    <div class="split" style="margin-top:50px">
+      <div class="reassure">
+        <h3 style="font-size:21px;margin:0 0 6px">Os verdadeiros culpados</h3>
+        <p style="color:#9fb3bb;font-size:15px;margin:0">A água entra quase sempre por peças pequenas, abaixo da linha de água:</p>
+        <ul class="clist">
+          <li><b>Válvulas de fundo e passa-cascos</b> envelhecidos, partidos ou corroídos.</li>
+          <li><b>Mangueiras</b> que racham ou saltam da válvula; <b>abraçadeiras</b> enferrujadas.</li>
+          <li>O <b>bucim do veio</b> (a passagem do veio do hélice) — a fonte número um. <span style="color:#9fb3bb">No diário de bordo do Portucale já se registou uma ligeira passagem de água aqui — vigiá-lo é rotina normal.</span></li>
+          <li>O <b>sistema de refrigeração do motor</b> (entrada de água salgada) e o escape.</li>
+          <li><b>Embornais / ralos do poço entupidos</b> com chuva forte — o que afunda barcos parados.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="keelfig" style="background:linear-gradient(180deg,#0f2937,#0b1f2a);padding:26px">
+          <h3 style="font-size:20px;margin:0 0 12px;color:var(--brass)">E as bombas de porão?</h3>
+          <p class="rnote" style="margin:0 0 14px">As bombas <b>não salvam barcos — ganham-te tempo</b>. Aguentam um fio de água, nunca um rombo. E falham: bateria fraca, ralo entupido, boia presa.</p>
+          <p class="rnote" style="margin:0 0 14px">Pior: uma bomba a trabalhar bem <b>esconde</b> o problema, esvaziando o porão até ao dia em que já não chega.</p>
+          <p class="rnote" style="margin:0"><b>Regra de ouro:</b> se a bomba liga muitas vezes, tens uma entrada de água. Investiga — não ignores.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:34px">
+      <div class="keelfig" style="background:linear-gradient(180deg,#241016,#16090c);border-color:rgba(200,80,63,.4);padding:26px">
+        <h3 style="font-size:20px;margin:0 0 12px;color:#eaa091">Se entrar água a navegar</h3>
+        <ol class="steps">
+          <li>Encontra a origem — abre o porão e segue a água até à fonte.</li>
+          <li>Tapa: enfia um <b>bujão de madeira</b> cónico no passa-casco, ou <b>fecha a válvula de fundo</b>.</li>
+          <li>Bombeia (manual + elétrica) para ganhar tempo enquanto resolves.</li>
+          <li>Comunica: <b>PANE-PANE</b> se está controlado, <b>MEDÊ</b> se a água ganha. (vê a secção do rádio)</li>
+        </ol>
+      </div>
+      <div class="reassure">
+        <h3 style="font-size:21px;margin:0 0 12px">Como reduzes o risco a quase zero</h3>
+        <p style="color:#CFDDE1;margin:0 0 4px">Não é um casco mágico — é olhar para meia dúzia de buracos pequenos antes de cada época:</p>
+        <ul class="clist">
+          <li>Bujões de madeira cónicos amarrados em <b>cada</b> passa-casco (kit de emergência a bordo).</li>
+          <li>Mangueiras reforçadas pretas, com <b>abraçadeira dupla</b> em inox.</li>
+          <li>Bucim do veio e válvulas de fundo verificados; embornais sempre limpos.</li>
+          <li>Fecha as válvulas de fundo quando deixas o barco.</li>
+        </ul>
+        <p class="pull" style="color:var(--brass);font-size:20px;margin-top:18px">A navegar, com o barco visitado e as válvulas em ordem, a probabilidade de afundamento é muito baixa.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1215,6 +1344,17 @@
     });
   });
   clRefresh();
+
+  /* ---- radio language toggle ---- */
+  var rcards = document.querySelector('.radio-cards');
+  document.querySelectorAll('.lt').forEach(function(b){
+    b.addEventListener('click', function(){
+      if(!rcards) return;
+      rcards.setAttribute('data-lang', b.getAttribute('data-setlang'));
+      document.querySelectorAll('.lt').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+    });
+  });
 })();
 </script>
 </body>
