@@ -76,11 +76,32 @@
   .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
   .brand{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque";font-weight:700;letter-spacing:.02em;}
   .brand .bub{width:26px;height:26px;flex:0 0 auto;}
-  nav.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;max-width:78%;}
-  nav.links::-webkit-scrollbar{display:none;}
-  nav.links a{font-size:13.5px;text-decoration:none;color:var(--chart);opacity:.78;transition:opacity .2s,color .2s;flex:0 0 auto;white-space:nowrap;}
-  nav.links a:hover{opacity:1;color:var(--brass-soft);}
-  @media(max-width:760px){nav.links{display:none;}}
+  /* ---------- header menu ---------- */
+  .menubtn{display:inline-flex;align-items:center;gap:11px;background:rgba(231,222,200,.06);border:1px solid var(--line);color:var(--chart);font-family:"Spline Sans Mono",monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 18px;border-radius:999px;cursor:pointer;transition:color .2s,border-color .2s;}
+  .menubtn:hover{color:var(--brass-soft);border-color:rgba(203,161,76,.45);}
+  .menubtn:focus-visible{outline:2px solid var(--brass-soft);outline-offset:2px;}
+  .menubtn .ham{position:relative;display:inline-block;width:16px;height:11px;}
+  .menubtn .ham span{position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .3s;}
+  .menubtn .ham span:nth-child(1){top:0;}
+  .menubtn .ham span:nth-child(2){top:4.5px;}
+  .menubtn .ham span:nth-child(3){top:9px;}
+  .menubtn[aria-expanded="true"] .ham span:nth-child(1){transform:translateY(4.5px) rotate(45deg);}
+  .menubtn[aria-expanded="true"] .ham span:nth-child(2){opacity:0;}
+  .menubtn[aria-expanded="true"] .ham span:nth-child(3){transform:translateY(-4.5px) rotate(-45deg);}
+
+  .menu-overlay{position:fixed;inset:0;z-index:100;background:rgba(8,23,31,.92);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .3s ease;overflow-y:auto;}
+  .menu-overlay.open{opacity:1;pointer-events:auto;}
+  .menu-inner{max-width:1080px;margin:0 auto;padding:26px 24px 64px;}
+  .menu-top{display:flex;justify-content:space-between;align-items:center;padding:4px 0 24px;border-bottom:1px solid var(--line);margin-bottom:30px;}
+  .menu-top .mt{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;color:var(--foam);}
+  .menu-close{background:rgba(231,222,200,.04);border:1px solid var(--line);color:var(--chart);border-radius:50%;width:44px;height:44px;font-size:24px;line-height:1;cursor:pointer;transition:color .2s,border-color .2s;}
+  .menu-close:hover{color:var(--brass-soft);border-color:rgba(203,161,76,.45);}
+  .menu-close:focus-visible{outline:2px solid var(--brass-soft);outline-offset:2px;}
+  .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media(max-width:900px){.menu-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.menu-grid{grid-template-columns:1fr;}}
+  .menu-grid .idxcol{background:none;border:none;border-radius:0;padding:0;}
+  .menu-grid .idxcol h3{margin:8px 0 2px;}
 
   /* ---------- hero ---------- */
   .hero{
@@ -447,31 +468,72 @@
       </svg>
       Portucale
     </div>
-    <nav class="links">
-      <a href="#indice">Índice</a>
-      <a href="#ela-vira">Ela vira?</a>
-      <a href="#sentir">Inclinar</a>
-      <a href="#forte">Força</a>
-      <a href="#bolina">Bolina</a>
-      <a href="#bordo">Manobras</a>
-      <a href="#partes">Partes</a>
-      <a href="#nos">Nós</a>
-      <a href="#regras">Regras</a>
-      <a href="#atracar">Atracar</a>
-      <a href="#fundear">Fundear</a>
-      <a href="#vento">Vento</a>
-      <a href="#aguas">Águas</a>
-      <a href="#radio">Rádio</a>
-      <a href="#mob">Homem ao mar</a>
-      <a href="#afunda">Afundar?</a>
-      <a href="#motor">Motor</a>
-      <a href="#enjoo">Enjoo</a>
-      <a href="#instrumentos">Instrumentos</a>
-      <a href="#check">Checklist</a>
-      <a href="#faq">FAQ</a>
-    </nav>
+    <button class="menubtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">
+      <span class="ham" aria-hidden="true"><span></span><span></span><span></span></span>
+      Menu
+    </button>
   </div>
 </header>
+
+<!-- ===================== MENU OVERLAY ===================== -->
+<div class="menu-overlay" id="menuPanel" role="dialog" aria-modal="true" aria-label="Menu do manual" aria-hidden="true">
+  <div class="menu-inner">
+    <div class="menu-top">
+      <span class="mt">Portucale · <span style="color:var(--brass-soft)">Manual de bordo</span></span>
+      <button class="menu-close" id="menuClose" type="button" aria-label="Fechar menu">&times;</button>
+    </div>
+    <div class="menu-grid">
+      <div class="idxcol">
+        <div class="pt">Parte I</div>
+        <h3>Como navega</h3>
+        <ul>
+          <li><a href="#ela-vira">Ela vira?</a></li>
+          <li><a href="#sentir">Sente a inclinação</a></li>
+          <li><a href="#forte">Quão forte é</a></li>
+          <li><a href="#bolina">A bolina ideal</a></li>
+          <li><a href="#bordo">Mudar de bordo</a></li>
+        </ul>
+      </div>
+      <div class="idxcol">
+        <div class="pt">Parte II</div>
+        <h3>Manobras &amp; a bordo</h3>
+        <ul>
+          <li><a href="#partes">As partes do barco</a></li>
+          <li><a href="#nos">Nós essenciais</a></li>
+          <li><a href="#regras">Regras de evitação</a></li>
+          <li><a href="#atracar">Atracar</a></li>
+          <li><a href="#fundear">Fundear</a></li>
+          <li><a href="#instrumentos">Os instrumentos</a></li>
+        </ul>
+      </div>
+      <div class="idxcol">
+        <div class="pt">Parte III</div>
+        <h3>Segurança</h3>
+        <ul>
+          <li><a href="#radio">No rádio (VHF)</a></li>
+          <li><a href="#mob">Homem ao mar</a></li>
+          <li><a href="#afunda">Pode afundar?</a></li>
+          <li><a href="#motor">Se o motor falhar</a></li>
+          <li><a href="#enjoo">Enjoo</a></li>
+          <li><a href="#emerg2">Incêndio &amp; socorros</a></li>
+          <li><a href="#seguranca">Onde está tudo</a></li>
+          <li><a href="#check">Checklist de partida</a></li>
+        </ul>
+      </div>
+      <div class="idxcol">
+        <div class="pt">Parte IV</div>
+        <h3>Planear &amp; o barco</h3>
+        <ul>
+          <li><a href="#vento">Quando sair</a></li>
+          <li><a href="#meteo">Meteo &amp; marés</a></li>
+          <li><a href="#aguas">As águas de casa</a></li>
+          <li><a href="#historia">A história</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
@@ -1925,6 +1987,32 @@
       b.classList.add('active');
     });
   });
+
+  /* ---- header menu ---- */
+  var menuBtn = document.getElementById('menuBtn');
+  var menuPanel = document.getElementById('menuPanel');
+  var menuClose = document.getElementById('menuClose');
+  function openMenu(){
+    menuPanel.classList.add('open');
+    menuBtn.setAttribute('aria-expanded','true');
+    menuPanel.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    menuPanel.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuPanel.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  if(menuBtn && menuPanel){
+    menuBtn.addEventListener('click', function(){
+      menuPanel.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    if(menuClose) menuClose.addEventListener('click', closeMenu);
+    menuPanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+    menuPanel.addEventListener('click', function(e){ if(e.target === menuPanel) closeMenu(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu(); });
+  }
 })();
 </script>
 </body>
