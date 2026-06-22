@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portucale · Dufour 34 — Conhece o teu veleiro</title>
+<meta name="description" content="Tudo o que precisas de saber sobre o Portucale, um veleiro Dufour 34: quão forte é, o que seria preciso para virar, e a inclinação ideal à bolina. Para quem navega pela primeira vez." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#08171F;          /* deep Atlantic ink */
+    --navy:#0C2230;         /* hull navy */
+    --navy-2:#11303F;       /* lighter panel navy */
+    --chart:#EFE7D4;        /* aged chart paper */
+    --chart-2:#E5DAC2;
+    --foam:#F7FBFA;         /* foam white */
+    --brass:#CBA14C;        /* sextant brass */
+    --brass-soft:#E0C282;
+    --star:#3FA37C;         /* starboard green */
+    --port:#C8503F;         /* port red */
+    --sky:#7FA9B8;          /* hazed horizon */
+    --line:rgba(231,222,200,.16);
+    --line-dk:rgba(8,23,31,.14);
+    --shadow:0 24px 60px -28px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--navy);color:var(--foam);
+    font-family:"Spline Sans",system-ui,sans-serif;
+    font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:1.04;margin:0;letter-spacing:-.015em;}
+  .mono{font-family:"Spline Sans Mono",monospace;font-variant-numeric:tabular-nums;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--brass-soft);font-weight:500;
+  }
+  section{position:relative;}
+
+  /* ---------- top bar ---------- */
+  header.bar{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(180deg,rgba(8,23,31,.92),rgba(8,23,31,.66));
+    border-bottom:1px solid var(--line);
+  }
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque";font-weight:700;letter-spacing:.02em;}
+  .brand .bub{width:26px;height:26px;flex:0 0 auto;}
+  nav.links{display:flex;gap:26px;}
+  nav.links a{font-size:13.5px;text-decoration:none;color:var(--chart);opacity:.78;transition:opacity .2s,color .2s;}
+  nav.links a:hover{opacity:1;color:var(--brass-soft);}
+  @media(max-width:760px){nav.links{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 80% at 78% 8%, rgba(203,161,76,.16), transparent 60%),
+      linear-gradient(180deg,var(--ink) 0%, var(--navy) 70%, var(--navy-2) 100%);
+    padding:74px 0 0;overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:8px;}}
+  .hero h1{font-size:clamp(56px,12vw,116px);font-weight:800;letter-spacing:-.03em;margin:.18em 0 .12em;}
+  .hero h1 .accent{color:var(--brass);}
+  .lede{font-size:clamp(19px,2.4vw,23px);max-width:30ch;color:#DCE7EA;font-weight:400;}
+  .lede strong{color:var(--foam);font-weight:600;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 30px;}
+  .chip{
+    font-family:"Spline Sans Mono",monospace;font-size:12.5px;letter-spacing:.02em;
+    padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--chart);
+    background:rgba(231,222,200,.04);
+  }
+  .chip b{color:var(--brass-soft);font-weight:500;}
+  .hero-art{position:relative;min-height:380px;}
+  .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.4));}
+  .scrollcue{padding:30px 0 40px;display:flex;justify-content:center;}
+  .scrollcue span{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.3em;color:var(--brass-soft);opacity:.7;text-transform:uppercase;}
+
+  /* ---------- generic dark section ---------- */
+  .pad{padding:84px 0;}
+  .lead-h{font-size:clamp(30px,5vw,46px);max-width:18ch;margin:18px 0 0;}
+  .sec-intro{max-width:62ch;margin:22px 0 0;color:#CFDDE1;font-size:18px;}
+
+  /* ---------- chart-paper sections ---------- */
+  .paper{background:var(--chart);color:var(--ink);}
+  .paper .eyebrow{color:#9a7322;}
+  .paper .sec-intro{color:#2c3d44;}
+  .paper a{color:#0d5b46;}
+  .paper-grain{position:relative;}
+  .paper-grain:before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line-dk) 1px,transparent 1px);
+    background-size:100% 30px;mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);
+  }
+
+  /* ---------- the "does it tip" pendulum block ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:46px;}
+  @media(max-width:840px){.split{grid-template-columns:1fr;gap:30px;}}
+  .keelfig{background:linear-gradient(180deg,#0e2735,#0a1c27);border:1px solid var(--line);border-radius:20px;padding:8px;}
+  .keelfig svg{width:100%;height:auto;display:block;}
+  .reassure{font-size:19px;}
+  .reassure p{margin:0 0 16px;}
+  .pull{font-family:"Bricolage Grotesque";font-weight:600;font-size:clamp(22px,3vw,28px);line-height:1.18;color:var(--brass);margin:0 0 18px;}
+
+  /* ---------- inclinometer (signature) ---------- */
+  .incl-sec{background:linear-gradient(180deg,var(--navy-2),var(--navy));}
+  .incl{
+    margin-top:46px;display:grid;grid-template-columns:1fr 360px;gap:0;
+    border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);
+    background:#0a1d28;
+  }
+  @media(max-width:880px){.incl{grid-template-columns:1fr;}}
+  .stage{position:relative;background:
+      radial-gradient(90% 70% at 50% 35%, rgba(127,169,184,.10), transparent 70%),
+      linear-gradient(180deg,#0d2433 0%, #0a1d28 58%, #081820 100%);
+    padding:18px;min-height:380px;display:flex;align-items:center;justify-content:center;}
+  .stage svg{width:100%;max-width:430px;height:auto;}
+  .readout{padding:30px 28px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:18px;}
+  @media(max-width:880px){.readout{border-left:none;border-top:1px solid var(--line);}}
+  .gauge-big{font-family:"Spline Sans Mono",monospace;font-size:58px;font-weight:600;line-height:1;letter-spacing:-.02em;}
+  .gauge-big sup{font-size:24px;font-weight:500;opacity:.7;top:-1.2em;}
+  .zone-pill{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.01em;transition:background .3s,color .3s;}
+  .zone-pill .dot{width:9px;height:9px;border-radius:50%;background:currentColor;}
+  .zone-note{font-size:15px;color:#C4D5DA;min-height:3.2em;}
+  .slider-lab{display:flex;justify-content:space-between;align-items:baseline;font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-soft);}
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;margin:6px 0 0;
+    background:linear-gradient(90deg,var(--star) 0%,var(--star) 45%,var(--brass) 64%,var(--brass) 76%,var(--port) 90%);
+    cursor:pointer;
+  }
+  input[type=range]:focus-visible{outline:2px solid var(--brass-soft);outline-offset:6px;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--foam);border:4px solid var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.5);}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--foam);border:4px solid var(--ink);}
+  .micro{font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:#7f97a0;line-height:1.5;}
+
+  /* ---------- specs grid ---------- */
+  .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dk);border:1px solid var(--line-dk);border-radius:16px;overflow:hidden;margin-top:42px;}
+  @media(max-width:760px){.specs{grid-template-columns:repeat(2,1fr);}}
+  .spec{background:var(--chart);padding:22px 20px;}
+  .spec .k{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9a7322;}
+  .spec .v{font-family:"Bricolage Grotesque";font-weight:700;font-size:30px;margin-top:6px;letter-spacing:-.02em;color:var(--ink);}
+  .spec .u{font-size:14px;color:#5a6a70;font-weight:400;}
+
+  /* ---------- strength stat cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px;}
+  @media(max-width:820px){.cards{grid-template-columns:1fr;}}
+  .card{background:linear-gradient(180deg,#0f2937,#0b1f2a);border:1px solid var(--line);border-radius:18px;padding:26px;}
+  .card .num{font-family:"Spline Sans Mono",monospace;font-size:42px;font-weight:600;color:var(--brass);letter-spacing:-.02em;}
+  .card h3{font-size:19px;margin:10px 0 8px;}
+  .card p{margin:0;font-size:15.5px;color:#C4D5DA;}
+  .bar-track{height:8px;border-radius:8px;background:rgba(231,222,200,.12);margin:16px 0 4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--brass),var(--brass-soft));}
+
+  /* ---------- capsize / breaking wave ---------- */
+  .wavefig{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0a1c27;}
+  .wavefig svg{width:100%;height:auto;display:block;}
+  .note-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;}
+  @media(max-width:820px){.note-row{grid-template-columns:1fr;}}
+  .note{border-left:3px solid var(--brass);padding:4px 0 4px 18px;}
+  .note h3{font-size:17px;margin:0 0 6px;}
+  .note p{margin:0;font-size:15px;color:#C4D5DA;}
+
+  /* ---------- heel zones ladder ---------- */
+  .ladder{margin-top:40px;border-radius:18px;overflow:hidden;border:1px solid var(--line-dk);}
+  .rung{display:grid;grid-template-columns:120px 1fr;gap:0;align-items:stretch;}
+  .rung .deg{font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:20px;display:flex;align-items:center;justify-content:center;color:#fff;}
+  .rung .body{background:var(--chart);padding:18px 22px;border-bottom:1px solid var(--line-dk);}
+  .rung .body h3{font-size:17px;color:var(--ink);margin:0 0 4px;}
+  .rung .body p{margin:0;font-size:15px;color:#3a4a50;}
+  .rung:last-child .body{border-bottom:none;}
+
+  /* ---------- points of sail ---------- */
+  .posfig{background:linear-gradient(180deg,#0e2735,#0a1c27);border:1px solid var(--line);border-radius:20px;padding:14px;}
+  .posfig svg{width:100%;height:auto;display:block;}
+
+  /* ---------- beaufort table ---------- */
+  .btable{width:100%;border-collapse:collapse;margin-top:36px;font-size:15px;}
+  .btable th,.btable td{text-align:left;padding:14px 14px;border-bottom:1px solid var(--line-dk);}
+  .btable thead th{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a7322;border-bottom:1px solid var(--line-dk);}
+  .btable .f{font-family:"Spline Sans Mono",monospace;font-weight:600;color:var(--ink);white-space:nowrap;}
+  .btable td{color:#33444a;}
+  .btable tr td:first-child{width:74px;}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:6px;}
+  .tag.go{background:rgba(63,163,124,.18);color:#1f6e51;}
+  .tag.reef{background:rgba(203,161,76,.2);color:#8a6312;}
+  .tag.care{background:rgba(200,80,63,.16);color:#a23a2c;}
+
+  /* ---------- photo strip ---------- */
+  .photo-card{margin-top:40px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0a1c27;position:relative;}
+  .photo-card img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;}
+  .photo-cap{padding:14px 20px;font-size:13.5px;color:#9fb3bb;font-family:"Spline Sans Mono",monospace;letter-spacing:.01em;}
+  .photo-fallback{display:none;padding:40px 24px;text-align:center;color:#7f97a0;font-family:"Spline Sans Mono",monospace;font-size:13px;}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:42px;}
+  .gframe{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(180deg,#0e2735,#0a1c27);min-height:160px;}
+  .gframe img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .gframe:hover img{transform:scale(1.05);}
+  .gframe figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 16px 13px;
+    font-family:"Spline Sans Mono",monospace;font-size:12px;line-height:1.35;color:#eef4f3;
+    background:linear-gradient(0deg,rgba(8,23,31,.94) 10%,rgba(8,23,31,.2) 70%,transparent);}
+  .gframe .goff{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
+    text-align:center;padding:18px;color:#6c828b;font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.04em;}
+  .gframe.broken img{display:none;}
+  .gframe.broken .goff{display:flex;}
+  .gframe.broken figcaption{background:none;}
+  .g-wide{grid-column:span 8;aspect-ratio:16/9;}
+  .g-tall{grid-column:span 4;aspect-ratio:3/4;}
+  .g-third{grid-column:span 4;aspect-ratio:4/3;}
+  .gcredit{margin-top:16px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:#7f97a0;letter-spacing:.01em;}
+  .gcredit a{color:#9fb3bb;}
+  @media(max-width:760px){
+    .g-wide,.g-tall,.g-third{grid-column:span 12;aspect-ratio:16/10;}
+  }
+
+  /* ---------- closing checklist ---------- */
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:38px;max-width:820px;}
+  @media(max-width:680px){.checks{grid-template-columns:1fr;}}
+  .check{display:flex;gap:14px;align-items:flex-start;}
+  .check svg{flex:0 0 auto;margin-top:3px;}
+  .check b{font-weight:600;}
+  .check span{color:#CFDDE1;font-size:16px;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 60px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px;}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:24px;}}
+  .foot-grid h4{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-soft);margin:0 0 12px;font-weight:500;}
+  .foot-grid p,.foot-grid li{font-size:14px;color:#9fb3bb;margin:0 0 6px;list-style:none;padding:0;}
+  .foot-grid ul{margin:0;padding:0;}
+  .disclaimer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:#6c828b;max-width:80ch;line-height:1.6;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .wave-anim{animation:none !important;}
+  }
+  .wave-anim{transform-origin:center;animation:bob 6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-6px) rotate(.6deg);}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="bub" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#CBA14C" stroke-width="2"/>
+        <circle cx="20" cy="20" r="6" fill="#3FA37C"/>
+        <line x1="20" y1="2" x2="20" y2="9" stroke="#CBA14C" stroke-width="2"/>
+        <line x1="20" y1="31" x2="20" y2="38" stroke="#CBA14C" stroke-width="2"/>
+      </svg>
+      Portucale
+    </div>
+    <nav class="links">
+      <a href="#ela-vira">Ela vira?</a>
+      <a href="#sentir">Sente a inclinação</a>
+      <a href="#forte">Quão forte é</a>
+      <a href="#bolina">Bolina ideal</a>
+      <a href="#vento">Quando sair</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Veleiro · Dufour 34 · 1974</span>
+      <h1><span class="accent">Portucale</span></h1>
+      <p class="lede">Um veleiro feito para <strong>inclinar</strong> — e para voltar <strong>sempre</strong> a endireitar-se.</p>
+      <div class="chips">
+        <span class="chip"><b>10,25</b> m de comprimento</span>
+        <span class="chip"><b>5 000</b> kg de barco</span>
+        <span class="chip">quilha de <b>2 000</b> kg</span>
+        <span class="chip">Atlântico &amp; Rias Galegas</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <!-- heeled sailing illustration -->
+      <svg viewBox="0 0 600 460" role="img" aria-label="Ilustração de um veleiro Dufour 34 a navegar inclinado">
+        <defs>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16384a"/><stop offset="1" stop-color="#0a1f2b"/>
+          </linearGradient>
+          <linearGradient id="sail" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F7FBFA"/><stop offset="1" stop-color="#D7E2E4"/>
+          </linearGradient>
+        </defs>
+        <!-- horizon glow -->
+        <circle cx="470" cy="120" r="150" fill="#CBA14C" opacity="0.10"/>
+        <!-- sea -->
+        <path d="M0 322 Q150 306 300 320 T600 318 V460 H0 Z" fill="url(#sea)"/>
+        <path d="M0 330 Q150 318 300 330 T600 328" fill="none" stroke="#3FA37C" stroke-opacity=".25" stroke-width="2"/>
+        <path d="M40 352 q40 -8 80 0 t80 0" fill="none" stroke="#7FA9B8" stroke-opacity=".3" stroke-width="2"/>
+        <path d="M380 360 q40 -8 80 0 t80 0" fill="none" stroke="#7FA9B8" stroke-opacity=".3" stroke-width="2"/>
+        <!-- boat group, heeled ~13deg -->
+        <g class="wave-anim" transform="rotate(-13 300 322)">
+          <!-- keel + bulb -->
+          <path d="M286 320 L292 392 L320 392 L312 320 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-opacity=".5" stroke-width="2"/>
+          <ellipse cx="306" cy="394" rx="26" ry="7" fill="#CBA14C"/>
+          <!-- hull -->
+          <path d="M150 318 Q160 348 210 352 L408 352 Q452 350 470 320 Q450 330 300 330 Q200 330 150 318 Z" fill="#10303f" stroke="#CBA14C" stroke-width="2.5"/>
+          <!-- deck/sheer line -->
+          <path d="M150 318 Q300 304 470 320" fill="none" stroke="#E0C282" stroke-width="2"/>
+          <!-- coachroof -->
+          <path d="M250 314 Q300 300 360 308 L356 320 L256 322 Z" fill="#0c2734" stroke="#CBA14C" stroke-opacity=".5" stroke-width="1.5"/>
+          <!-- mast -->
+          <line x1="312" y1="312" x2="318" y2="92" stroke="#E0C282" stroke-width="3.4"/>
+          <!-- boom -->
+          <line x1="316" y1="150" x2="246" y2="176" stroke="#E0C282" stroke-width="3"/>
+          <!-- mainsail -->
+          <path d="M316 100 L316 150 L250 174 Q300 140 316 100 Z" fill="url(#sail)" opacity=".96"/>
+          <!-- genoa -->
+          <path d="M318 110 Q420 230 452 300 Q380 308 326 300 Q320 210 318 110 Z" fill="url(#sail)" opacity=".9"/>
+          <!-- forestay -->
+          <line x1="318" y1="98" x2="452" y2="300" stroke="#9fb3bb" stroke-width="1" opacity=".6"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="scrollcue"><span>desce — começa pela pergunta de sempre ↓</span></div>
+</section>
+
+<!-- ===================== DOES IT TIP ===================== -->
+<section class="paper paper-grain pad" id="ela-vira">
+  <div class="wrap reveal">
+    <span class="eyebrow">A primeira pergunta de toda a gente</span>
+    <h2 class="lead-h" style="color:var(--ink)">«E se virar?»</h2>
+    <p class="sec-intro">É a pergunta mais natural do mundo quando se entra pela primeira vez num veleiro. A resposta curta: o Portucale <strong>não é um bote</strong>. É um barco lastrado — foi desenhado precisamente para não virar.</p>
+    <div class="split">
+      <div class="keelfig">
+        <svg viewBox="0 0 420 360" role="img" aria-label="Esquema da quilha como pêndulo que endireita o barco">
+          <defs><linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16384a"/><stop offset="1" stop-color="#0c2533"/></linearGradient></defs>
+          <!-- water -->
+          <line x1="0" y1="150" x2="420" y2="150" stroke="#3FA37C" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 6"/>
+          <g transform="rotate(22 210 150)">
+            <!-- hull section -->
+            <path d="M150 150 Q150 196 210 200 Q270 196 270 150 Q270 158 210 160 Q150 158 150 150 Z" fill="url(#hl)" stroke="#CBA14C" stroke-width="2"/>
+            <!-- deck -->
+            <path d="M150 150 Q210 140 270 150" fill="none" stroke="#E0C282" stroke-width="2"/>
+            <!-- mast -->
+            <line x1="210" y1="150" x2="210" y2="34" stroke="#E0C282" stroke-width="3"/>
+            <!-- keel fin -->
+            <path d="M200 198 L204 286 L216 286 L220 198 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-width="1.6"/>
+            <!-- bulb (weight) -->
+            <ellipse cx="210" cy="290" rx="26" ry="11" fill="#CBA14C"/>
+            <text x="210" y="294" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#0b1f2a" font-weight="600">2000kg</text>
+            <!-- gravity arrow stays vertical-ish relative to keel -->
+          </g>
+          <!-- true-vertical gravity vector from bulb -->
+          <g stroke="#C8503F" stroke-width="2.4" fill="#C8503F">
+            <line x1="300" y1="262" x2="300" y2="320"/>
+            <path d="M300 326 l-6 -10 h12 z"/>
+            <text x="308" y="300" font-family="Spline Sans Mono" font-size="12" fill="#E0907F">peso</text>
+          </g>
+          <!-- righting arrow -->
+          <g stroke="#3FA37C" stroke-width="2.4" fill="#3FA37C">
+            <path d="M250 96 A120 120 0 0 1 210 70" fill="none"/>
+            <path d="M214 64 l11 3 -4 11 z"/>
+            <text x="150" y="78" font-family="Spline Sans Mono" font-size="12" fill="#7fd0b3">endireita</text>
+          </g>
+        </svg>
+      </div>
+      <div class="reassure">
+        <p class="pull">A quilha pesa 2 000 kg e está 1,8 m por baixo de ti. Funciona como um pêndulo.</p>
+        <p>Quando o vento empurra o barco para o lado, esse peso lá em baixo puxa-o de volta à vertical. Quanto mais o barco inclina, <strong>mais forte</strong> fica essa força a endireitar — e, ao mesmo tempo, as velas «derramam» vento e empurram menos.</p>
+        <p>É por isto que um veleiro com quilha se chama <strong>auto-endireitável</strong>: encontra sozinho o seu ângulo de equilíbrio e fica lá. Inclinar (adornar) não é o princípio de virar — é o barco a trabalhar exatamente como foi feito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INCLINOMETER (signature) ===================== -->
+<section class="incl-sec pad" id="sentir">
+  <div class="wrap reveal">
+    <span class="eyebrow">Inclinómetro · arrasta o vento</span>
+    <h2 class="lead-h">Sente a inclinação antes de a viveres</h2>
+    <p class="sec-intro">Mexe no vento e vê o Portucale adornar. Repara numa coisa: por muito que aumentes, a quilha continua lá em baixo a puxar. Isto é inclinação — não é emborcamento.</p>
+
+    <div class="incl">
+      <div class="stage">
+        <svg id="boatSVG" viewBox="0 0 400 400" role="img" aria-label="Inclinómetro interativo do veleiro">
+          <!-- sky/water -->
+          <rect x="0" y="0" width="400" height="400" fill="none"/>
+          <!-- waterline -->
+          <line x1="20" y1="250" x2="380" y2="250" stroke="#3FA37C" stroke-opacity=".35" stroke-width="2"/>
+          <text x="26" y="244" font-family="Spline Sans Mono" font-size="11" fill="#5e8e9c">linha de água</text>
+          <!-- angle arc -->
+          <path id="arc" d="" fill="none" stroke="#CBA14C" stroke-width="2" stroke-opacity=".55"/>
+          <line x1="200" y1="250" x2="200" y2="70" stroke="#7FA9B8" stroke-opacity=".25" stroke-width="1.5" stroke-dasharray="2 6"/>
+          <!-- boat group (rotates) -->
+          <g id="boatG" transform="rotate(0 200 250)">
+            <!-- hull cross-section -->
+            <path d="M150 250 Q150 300 200 305 Q250 300 250 250 Q250 260 200 262 Q150 260 150 250 Z" fill="#10303f" stroke="#CBA14C" stroke-width="2.4"/>
+            <path d="M150 250 Q200 238 250 250" fill="none" stroke="#E0C282" stroke-width="2"/>
+            <!-- cabin -->
+            <path d="M176 248 Q200 240 224 248 L222 256 L178 256 Z" fill="#0c2734" stroke="#CBA14C" stroke-opacity=".4" stroke-width="1.4"/>
+            <!-- crew dot -->
+            <circle cx="210" cy="246" r="5" fill="#3FA37C"/>
+            <!-- mast -->
+            <line x1="200" y1="250" x2="200" y2="86" stroke="#E0C282" stroke-width="3.4"/>
+            <circle cx="200" cy="86" r="3.4" fill="#CBA14C"/>
+            <!-- keel -->
+            <path d="M191 303 L195 372 L207 372 L211 303 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-width="1.6"/>
+            <ellipse cx="201" cy="374" rx="22" ry="9" fill="#CBA14C"/>
+          </g>
+          <!-- gravity vector (true vertical) -->
+          <g stroke="#C8503F" stroke-width="2.2" fill="#C8503F" opacity=".9">
+            <line id="grav" x1="201" y1="378" x2="201" y2="392"/>
+          </g>
+        </svg>
+      </div>
+      <div class="readout">
+        <div>
+          <div class="slider-lab"><span>Vento</span><span class="mono" id="windVal">12 nós</span></div>
+          <input id="wind" type="range" min="4" max="32" value="12" step="1" aria-label="Força do vento em nós" />
+          <div class="micro" style="margin-top:8px">brisa fraca · vento bom · começa a sobrar · reduz vela</div>
+        </div>
+        <div>
+          <div class="slider-lab" style="color:#9fb3bb"><span>Adornamento</span></div>
+          <div class="gauge-big" id="heelVal">16<sup>°</sup></div>
+        </div>
+        <div class="zone-pill" id="zonePill"><span class="dot"></span><span id="zoneTxt">Inclinação ideal</span></div>
+        <p class="zone-note" id="zoneNote">Zona doce a bolina. O barco está com força, rápido e equilibrado. Aproveita.</p>
+        <p class="micro">Valores indicativos para vela cheia, à bolina e bem afinada. O mar e a afinação fazem variar tudo isto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW STRONG ===================== -->
+<section class="paper paper-grain pad" id="forte">
+  <div class="wrap reveal">
+    <span class="eyebrow">Quão forte é este barco</span>
+    <h2 class="lead-h" style="color:var(--ink)">Os números que te dão descanso</h2>
+    <p class="sec-intro">O Portucale é um cruzeiro costeiro robusto dos anos 70, com casco maciço de fibra abaixo da linha de água. Três números resumem porque é estável.</p>
+
+    <div class="specs">
+      <div class="spec"><div class="k">Comprimento</div><div class="v">10,25<span class="u"> m</span></div></div>
+      <div class="spec"><div class="k">Boca (largura)</div><div class="v">3,28<span class="u"> m</span></div></div>
+      <div class="spec"><div class="k">Calado</div><div class="v">1,78<span class="u"> m</span></div></div>
+      <div class="spec"><div class="k">Deslocamento</div><div class="v">5 000<span class="u"> kg</span></div></div>
+      <div class="spec"><div class="k">Lastro (quilha)</div><div class="v">2 000<span class="u"> kg</span></div></div>
+      <div class="spec"><div class="k">Superfície vélica</div><div class="v">~48<span class="u"> m²</span></div></div>
+      <div class="spec"><div class="k">Aparelho</div><div class="v" style="font-size:21px">Sloop<span class="u"> topo de mastro</span></div></div>
+      <div class="spec"><div class="k">Quilha · leme</div><div class="v" style="font-size:21px">Fixa<span class="u"> · de patilhão</span></div></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="num">40%</div>
+        <h3>Rácio de lastro</h3>
+        <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+        <p>40% de todo o peso do barco está na quilha, no fundo. Quanto mais baixo o peso, mais o barco resiste a inclinar e mais depressa endireita. 40% é um valor cheio, de barco rijo.</p>
+      </div>
+      <div class="card">
+        <div class="num">1,94</div>
+        <h3>Fórmula de risco de emborcamento</h3>
+        <div class="bar-track"><div class="bar-fill" style="width:62%"></div></div>
+        <p>Mede a largura contra o peso. A regra náutica diz: <b>abaixo de 2,0</b> = aptidão para alto-mar; acima = melhor ficar pela costa. O Portucale está em <b>1,94</b>, do lado seguro.</p>
+      </div>
+      <div class="card">
+        <div class="num">25,8</div>
+        <h3>Índice de conforto</h3>
+        <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+        <p>Indica o quão suave passa pelas ondas. O valor coloca-o como cruzeiro costeiro equilibrado — firme no mar, sem ser duro nem saltitão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT WOULD CAPSIZE IT ===================== -->
+<section class="pad" style="background:linear-gradient(180deg,var(--navy),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">O que seria, então, preciso para virar</span>
+    <h2 class="lead-h">Vento sozinho não vira este barco</h2>
+    <p class="sec-intro">Vale a pena perceber isto com clareza, porque tira o medo do lugar errado e põe a atenção no lugar certo: nas ondas, não nas rajadas.</p>
+
+    <div class="split" style="margin-top:40px">
+      <div class="wavefig">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Esquema de uma onda rebentante ao través como causa real de emborcamento">
+          <defs><linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d4a5e"/><stop offset="1" stop-color="#0a1f2b"/></linearGradient></defs>
+          <rect width="420" height="320" fill="none"/>
+          <!-- big breaking wave -->
+          <path d="M0 300 L0 150 Q80 60 150 120 Q180 145 150 150 Q120 100 70 150 Q60 230 0 300 Z" fill="url(#bw)" stroke="#3FA37C" stroke-opacity=".3"/>
+          <path d="M70 150 Q110 120 150 132 Q120 150 95 158 Q80 152 70 150 Z" fill="#F7FBFA" opacity=".75"/>
+          <!-- boat beam-on -->
+          <g transform="translate(250 175) rotate(18)">
+            <path d="M-50 0 Q-50 30 0 33 Q50 30 50 0 Q50 8 0 10 Q-50 8 -50 0 Z" fill="#10303f" stroke="#CBA14C" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-70" stroke="#E0C282" stroke-width="2.6"/>
+            <path d="M-6 33 L-3 78 L6 78 L9 33 Z" fill="#0b1f2a"/>
+            <ellipse cx="2" cy="80" rx="16" ry="6" fill="#CBA14C"/>
+          </g>
+          <!-- beam marker -->
+          <g stroke="#C8503F" stroke-width="1.6" fill="#C8503F">
+            <line x1="200" y1="290" x2="300" y2="290"/>
+            <text x="250" y="284" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#E0907F">onda ≈ 3,3 m ao través</text>
+          </g>
+        </svg>
+      </div>
+      <div class="reassure">
+        <p class="pull" style="color:var(--brass)">Só uma onda a rebentar, de lado, e tão alta como o barco é largo (~3,3 m), tem força para o deitar.</p>
+        <p>Isso é mar de tempestade em mar aberto — Beaufort 9 ou 10, o tipo de condições que se planeia uma época inteira para <strong>evitar</strong>. Não é o que encontras num passeio à saída de Leixões ou nas Rias.</p>
+        <p>Com vento, o barco tem ainda uma válvula de segurança que tu vais sentir: quando fica com vela a mais, <strong>orza sozinho</strong> — aponta o nariz ao vento e perde força. Ele avisa-te muito antes de qualquer drama.</p>
+      </div>
+    </div>
+
+    <div class="note-row">
+      <div class="note"><h3>Rajada forte</h3><p>O barco inclina mais, derrama vento e orza. Alivias a escota e ele levanta-se. Recuperação imediata.</p></div>
+      <div class="note"><h3>Knockdown (mastro à água)</h3><p>Raro e dramático, mas a ~90° a quilha ainda te endireita. Velejadores recuperam destes lances.</p></div>
+      <div class="note"><h3>Emborcar (ficar de quilha ao ar)</h3><p>Precisa de ultrapassar o ângulo limite — só com mar rebentante extremo ao través. Fora do cenário costeiro normal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== IDEAL HEEL UPWIND ===================== -->
+<section class="paper paper-grain pad" id="bolina">
+  <div class="wrap reveal">
+    <span class="eyebrow">A inclinação ideal à bolina</span>
+    <h2 class="lead-h" style="color:var(--ink)">15 a 20 graus. Mais plano é mais rápido.</h2>
+    <p class="sec-intro">O instinto de quem começa é achar que «rail na água» é sinal de velocidade. É o contrário. Passados os 20°, estás a perder — mais deriva, leme a travar, e o barco a orzar. A vela mais rápida e confortável à bolina é mais direita do que parece que devia ser.</p>
+
+    <div class="ladder">
+      <div class="rung"><div class="deg" style="background:#2b6f55">0–14°</div><div class="body"><h3>A ganhar potência</h3><p>O barco acelera, ainda há margem. Podes apertar as velas e procurar mais vento.</p></div></div>
+      <div class="rung"><div class="deg" style="background:#3FA37C">14–20°</div><div class="body"><h3>Inclinação ideal — a zona doce</h3><p>Máximo de força útil. O casco alonga ligeiramente o plano de água e desliza. É aqui que queres estar à bolina.</p></div></div>
+      <div class="rung"><div class="deg" style="background:#CBA14C">20–26°</div><div class="body"><h3>Hora de reduzir potência</h3><p>Sobra vento. O leme começa a pesar (ardência). Larga o carro a sotavento, abre a escota grande, achata as velas.</p></div></div>
+      <div class="rung"><div class="deg" style="background:#C8503F">26°+</div><div class="body"><h3>Sobrecarregada — rizar</h3><p>Estás mais lento, não mais rápido. Mete um rizo na vela grande, reduz a genoa. O barco fica logo mais direito, mais leve e mais veloz.</p></div></div>
+    </div>
+
+    <div class="split" style="margin-top:48px">
+      <div class="reassure" style="color:var(--ink)">
+        <p class="pull">O leme é o teu medidor. Se estás a lutar com a roda para o barco não subir ao vento, tens vela a mais.</p>
+        <p style="color:#33444a">Essa ardência (orzar) não é uma avaria — é o barco a dizer-te que está sobrecarregado. Reduz a inclinação e o leme aligeira na mão. Aprende a ler isto e ganhas metade da confiança de uma vez.</p>
+        <p style="color:#33444a"><b>Ordem para tirar potência:</b> 1) larga o carro/traveller &nbsp;→&nbsp; 2) alivia e abre a escota grande &nbsp;→&nbsp; 3) achata com cunho, retranca e estai de popa &nbsp;→&nbsp; 4) <b>riza</b> a vela grande e depois a genoa.</p>
+      </div>
+      <div class="keelfig" style="background:linear-gradient(180deg,#0e2735,#0a1c27)">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Comparação entre adornamento ideal e excessivo">
+          <line x1="0" y1="210" x2="420" y2="210" stroke="#3FA37C" stroke-opacity=".3" stroke-width="2"/>
+          <!-- ideal -->
+          <g transform="rotate(-17 120 210)">
+            <path d="M92 210 Q92 240 120 243 Q148 240 148 210 Q148 218 120 220 Q92 218 92 210 Z" fill="#10303f" stroke="#3FA37C" stroke-width="2"/>
+            <line x1="120" y1="210" x2="120" y2="96" stroke="#E0C282" stroke-width="2.6"/>
+            <path d="M114 243 L117 286 L126 286 L129 243 Z" fill="#0b1f2a"/>
+          </g>
+          <text x="120" y="276" text-anchor="middle" font-family="Spline Sans Mono" font-size="12" fill="#7fd0b3">~17° · ideal</text>
+          <!-- excessive -->
+          <g transform="rotate(-34 300 210)">
+            <path d="M272 210 Q272 240 300 243 Q328 240 328 210 Q328 218 300 220 Q272 218 272 210 Z" fill="#10303f" stroke="#C8503F" stroke-width="2"/>
+            <line x1="300" y1="210" x2="300" y2="96" stroke="#E0C282" stroke-width="2.6"/>
+            <path d="M294 243 L297 286 L306 286 L309 243 Z" fill="#0b1f2a"/>
+          </g>
+          <text x="300" y="276" text-anchor="middle" font-family="Spline Sans Mono" font-size="12" fill="#E0907F">~34° · a perder</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== POINTS OF SAIL ===================== -->
+<section class="pad" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Rosa dos rumos</span>
+    <h2 class="lead-h">Onde está o vento, onde podes ir</h2>
+    <p class="sec-intro">Um veleiro não navega contra o vento de frente — há uma «zona morta» de cerca de 45° para cada lado. Tudo o resto é navegável. Verde é o bordo de estibordo; vermelho, bombordo.</p>
+    <div class="split" style="margin-top:42px;align-items:start">
+      <div class="posfig">
+        <svg viewBox="0 0 360 360" role="img" aria-label="Diagrama da rosa dos rumos com a zona morta e os rumos de vela">
+          <!-- wind arrow from top -->
+          <g stroke="#7FA9B8" stroke-width="2.4" fill="#7FA9B8">
+            <line x1="180" y1="14" x2="180" y2="56"/>
+            <path d="M180 62 l-7 -12 h14 z"/>
+            <text x="180" y="-2" dy="10" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#9fc0cc">VENTO</text>
+          </g>
+          <circle cx="180" cy="195" r="135" fill="none" stroke="rgba(231,222,200,.14)" stroke-width="1.5"/>
+          <!-- no-go zone -->
+          <path d="M180 195 L120 73 A135 135 0 0 1 240 73 Z" fill="#C8503F" fill-opacity=".12" stroke="#C8503F" stroke-opacity=".3" stroke-dasharray="4 5"/>
+          <text x="180" y="120" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#d98c7e">zona morta</text>
+          <text x="180" y="135" text-anchor="middle" font-family="Spline Sans Mono" font-size="10" fill="#a05848">~45° · não dá</text>
+          <!-- center boat -->
+          <circle cx="180" cy="195" r="7" fill="#CBA14C"/>
+          <!-- labels positions -->
+          <!-- close hauled SB -->
+          <g font-family="Spline Sans" font-size="12">
+            <circle cx="246" cy="120" r="5" fill="#3FA37C"/><text x="256" y="118" fill="#bfe0d2">bolina</text>
+            <circle cx="294" cy="195" r="5" fill="#3FA37C"/><text x="304" y="193" fill="#bfe0d2" text-anchor="end" transform="translate(34,0)">través</text>
+            <circle cx="258" cy="270" r="5" fill="#3FA37C"/><text x="268" y="268" fill="#bfe0d2">largo</text>
+            <circle cx="114" cy="120" r="5" fill="#C8503F"/><text x="104" y="118" fill="#e6b3aa" text-anchor="end">bolina</text>
+            <circle cx="66" cy="195" r="5" fill="#C8503F"/><text x="56" y="193" fill="#e6b3aa" text-anchor="end">través</text>
+            <circle cx="102" cy="270" r="5" fill="#C8503F"/><text x="92" y="268" fill="#e6b3aa" text-anchor="end">largo</text>
+            <circle cx="180" cy="318" r="5" fill="#E0C282"/><text x="180" y="338" fill="#e8d3a6" text-anchor="middle">popa / empopada</text>
+          </g>
+        </svg>
+      </div>
+      <div class="reassure">
+        <p class="pull" style="color:var(--brass)">À bolina (o mais perto do vento que dá) é onde o barco inclina mais — e onde vale a regra dos 15–20°.</p>
+        <p>Ao través e ao largo, o barco endireita-se naturalmente, fica mais rápido e mais confortável: o vento empurra em vez de derrubar. À popa quase não há inclinação.</p>
+        <p>Se alguma vez te sentires sobrecarregado à bolina, <strong>arribar</strong> ligeiramente (apontar mais para longe do vento) é o gesto que tira tensão de tudo de uma vez. Saber isto é saber sair de qualquer aperto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BEAUFORT / WHEN TO SAIL ===================== -->
+<section class="paper paper-grain pad" id="vento">
+  <div class="wrap reveal">
+    <span class="eyebrow">Quando sair · quando rizar</span>
+    <h2 class="lead-h" style="color:var(--ink)">O guia de vento da tripulação</h2>
+    <p class="sec-intro">Uma referência simples pela escala de Beaufort. É exatamente assim que o Portucale tem sido velejado — o diário de bordo mostra a tripulação a meter o primeiro rizo aos 20–25 nós e a estrear a vela rizada com sucesso.</p>
+    <table class="btable">
+      <thead><tr><th>Força</th><th>Vento</th><th>O que sentes a bordo</th><th>Vela</th></tr></thead>
+      <tbody>
+        <tr><td class="f">F2–3</td><td class="f">4–10 nós</td><td>Brisa suave, inclinação ligeira. Ideal para aprender e ganhar à-vontade.</td><td><span class="tag go">vela cheia</span></td></tr>
+        <tr><td class="f">F4</td><td class="f">11–16 nós</td><td>Vivo e divertido. O barco ganha vida, adorna 15–20°. A zona doce.</td><td><span class="tag go">vela cheia</span></td></tr>
+        <tr><td class="f">F5</td><td class="f">17–21 nós</td><td>Começa a sobrar. O leme pesa. Hora de pensar no primeiro rizo.</td><td><span class="tag reef">1.º rizo</span></td></tr>
+        <tr><td class="f">F6</td><td class="f">22–27 nós</td><td>Mar formado. Grande rizada e genoa reduzida. Tripulação experiente.</td><td><span class="tag reef">rizar + reduzir</span></td></tr>
+        <tr><td class="f">F7+</td><td class="f">28+ nós</td><td>Para quem está preparado e treinado. A maior parte dos passeios não sai.</td><td><span class="tag care">cautela</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="pad" style="background:var(--navy)">
+  <div class="wrap reveal">
+    <span class="eyebrow">Galeria · Dufour 34 de 1974</span>
+    <h2 class="lead-h">É assim que ela é</h2>
+    <p class="sec-intro">Fotografias de um Dufour 34 de 1974 — o mesmo projeto, a mesma geração e as mesmas linhas do Portucale: casco baixo e clássico, overhangs suaves, quilha fixa com leme de patilhão e sloop de topo de mastro.</p>
+
+    <div class="gallery">
+      <figure class="gframe g-wide">
+        <img loading="lazy" alt="Dufour 34 de 1974 visto de perfil"
+          src="https://i0.wp.com/sailingmutiny.com/wp-content/uploads/2018/05/Screen-Shot-2018-05-27-at-10.21.38.png?w=1100&ssl=1"
+          onerror="this.closest('.gframe').classList.add('broken')" />
+        <span class="goff">↯ imagem indisponível offline</span>
+        <figcaption>Perfil clássico — o mesmo projeto do Portucale.</figcaption>
+      </figure>
+      <figure class="gframe g-tall">
+        <img loading="lazy" alt="Dufour 34 de 1974 fundeado"
+          src="https://i0.wp.com/sailingmutiny.com/wp-content/uploads/2018/05/Screen-Shot-2018-05-28-at-07.25.37.png?w=820&ssl=1"
+          onerror="this.closest('.gframe').classList.add('broken')" />
+        <span class="goff">↯ imagem indisponível offline</span>
+        <figcaption>Fundeada, em águas calmas.</figcaption>
+      </figure>
+      <figure class="gframe g-third">
+        <img loading="lazy" alt="Dufour 34 de 1974 com as velas içadas"
+          src="https://i0.wp.com/sailingmutiny.com/wp-content/uploads/elementor/thumbs/DSC00009-e1527594722265-ops0uvi5chwjik3bmyi9p35ytsdxly19xbwv6c3r40.jpg?w=900&ssl=1"
+          onerror="this.closest('.gframe').classList.add('broken')" />
+        <span class="goff">↯ imagem indisponível offline</span>
+        <figcaption>A largar pano.</figcaption>
+      </figure>
+      <figure class="gframe g-third">
+        <img loading="lazy" alt="Popa e leme de patilhão de um Dufour 34 de 1974"
+          src="https://i0.wp.com/sailingmutiny.com/wp-content/uploads/elementor/thumbs/DSC00091-e1527594471989-ops0vw5ur1aq3cm2owcpwbwxztd8y52t2dcsw4ledc.jpg?w=900&ssl=1"
+          onerror="this.closest('.gframe').classList.add('broken')" />
+        <span class="goff">↯ imagem indisponível offline</span>
+        <figcaption>Popa e leme de patilhão.</figcaption>
+      </figure>
+      <figure class="gframe g-third">
+        <img loading="lazy" alt="Convés de um Dufour 34 de 1974 visto de cima"
+          src="https://i0.wp.com/sailingmutiny.com/wp-content/uploads/elementor/thumbs/20180420_142906-e1527594386636-ops0vajkduh4obhh750aszdcbybt13ozbecmurhgcg.jpg?w=900&ssl=1"
+          onerror="this.closest('.gframe').classList.add('broken')" />
+        <span class="goff">↯ imagem indisponível offline</span>
+        <figcaption>Convés e cockpit, vistos de cima.</figcaption>
+      </figure>
+    </div>
+    <p class="gcredit">Fotografias do veleiro «Baremka», um Dufour 34 de 1974 · cortesia de <a href="https://sailingmutiny.com/tour-of-baremka-our-first-boat-1974-dufour-34/" target="_blank" rel="noopener">Sailing Mutiny</a>. Não são imagens do próprio Portucale, mas de uma embarcação irmã da mesma série.</p>
+  </div>
+</section>
+
+<!-- ===================== CLOSING / CHECKLIST ===================== -->
+<section class="pad" style="background:linear-gradient(180deg,var(--navy),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Antes de largares amarras</span>
+    <h2 class="lead-h">Cinco coisas para levares contigo</h2>
+    <div class="checks">
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#3FA37C" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#3FA37C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><b>Inclinar é normal.</b> O barco foi feito para isso. A quilha trá-lo sempre de volta.</span>
+      </div>
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#3FA37C" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#3FA37C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><b>Mira os 15–20°.</b> Mais plano é mais rápido. Se passa dos 20°, tira potência.</span>
+      </div>
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#3FA37C" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#3FA37C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><b>O leme fala.</b> Se pesa e o barco quer subir ao vento, tens vela a mais.</span>
+      </div>
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#3FA37C" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#3FA37C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><b>Na dúvida, alivia.</b> Largar a escota e arribar tira tensão de tudo num instante.</span>
+      </div>
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#3FA37C" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#3FA37C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><b>O medo certo é das ondas.</b> Escolhe o teu dia pelo estado do mar, não pela rajada.</span>
+      </div>
+    </div>
+    <p class="sec-intro" style="margin-top:40px;font-size:20px;color:var(--brass-soft)">Bons ventos. O Portucale está do teu lado.</p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>A embarcação</h4>
+        <p><strong style="color:#cdd9dd">Portucale</strong> — Dufour 34, projeto de Michel Dufour, construído em França (1ª série de 1974).</p>
+        <p>Anteriormente «Diablotin», sob bandeira francesa.</p>
+      </div>
+      <div>
+        <h4>Registo</h4>
+        <ul>
+          <li>Reg. POL0003PE · porto de Hel</li>
+          <li>WIN PL-PL1003MUE021</li>
+          <li>Iate recreativo · à vela c/ motor</li>
+          <li>Licença de rádio válida até 2031</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Operação</h4>
+        <ul>
+          <li>Associação de Navegadores Oceânicos</li>
+          <li>Marina de Leça · Leixões, Porto</li>
+          <li>Seguro Victoria — Proteção Náutica</li>
+          <li>Costa atlântica &amp; Rias Galegas</li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Esta página é um material de orientação e ganho de confiança para tripulantes que navegam pela primeira vez. Os valores de estabilidade (rácio de lastro, fórmula de risco de emborcamento, índice de conforto) baseiam-se nas características publicadas do projeto Dufour 34; os ângulos de inclinação e as referências de vento são indicativos e variam com o estado do mar, a carga, a afinação e a vela em uso. Nada aqui substitui formação náutica adequada, a leitura do mar e, acima de tudo, o julgamento do comandante a bordo. Em caso de dúvida, reduz vela e procura abrigo.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- inclinometer ---- */
+  var wind = document.getElementById('wind');
+  var windVal = document.getElementById('windVal');
+  var heelVal = document.getElementById('heelVal');
+  var boatG = document.getElementById('boatG');
+  var arc = document.getElementById('arc');
+  var grav = document.getElementById('grav');
+  var pill = document.getElementById('zonePill');
+  var zoneTxt = document.getElementById('zoneTxt');
+  var zoneNote = document.getElementById('zoneNote');
+
+  var ZONES = [
+    {max:14, txt:'A ganhar potência', col:'#5fae8c', bg:'rgba(63,163,124,.16)',
+     note:'Ainda há margem. O barco acelera — podes apertar as velas e procurar mais vento.'},
+    {max:20, txt:'Inclinação ideal', col:'#3FA37C', bg:'rgba(63,163,124,.20)',
+     note:'Zona doce a bolina. O barco está com força, rápido e equilibrado. Aproveita.'},
+    {max:26, txt:'Hora de reduzir', col:'#CBA14C', bg:'rgba(203,161,76,.20)',
+     note:'Começa a sobrar vento. O leme pesa. Larga o carro a sotavento e abre a escota grande.'},
+    {max:99, txt:'Sobrecarregada — riza', col:'#C8503F', bg:'rgba(200,80,63,.18)',
+     note:'Estás mais lento, não mais rápido. Mete um rizo: o barco fica logo mais direito e veloz. (Mesmo assim, a quilha continua a endireitar — é inclinação, não emborcamento.)'}
+  ];
+
+  function heelFromWind(w){
+    var h = 1.4 * (w - 3.5);
+    if(h < 0) h = 0;
+    if(h > 38) h = 38;
+    return h;
+  }
+  function describeArc(deg){
+    // arc from vertical(top) sweeping by deg, radius 150 around pivot 200,250
+    var cx=200, cy=250, r=160;
+    var a0 = -90 * Math.PI/180;
+    var a1 = (-90 + deg) * Math.PI/180;
+    var x0 = cx + r*Math.cos(a0), y0 = cy + r*Math.sin(a0);
+    var x1 = cx + r*Math.cos(a1), y1 = cy + r*Math.sin(a1);
+    return 'M'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 0 1 '+x1.toFixed(1)+' '+y1.toFixed(1);
+  }
+  function update(){
+    var w = +wind.value;
+    var h = heelFromWind(w);
+    var hr = Math.round(h);
+    windVal.textContent = w + ' nós';
+    heelVal.innerHTML = hr + '<sup>°</sup>';
+    boatG.setAttribute('transform','rotate('+h.toFixed(1)+' 200 250)');
+    arc.setAttribute('d', describeArc(h));
+    // gravity vector stays vertical from rotated bulb base (approx pivot offset)
+    var rad = h*Math.PI/180;
+    var bx = 200 + (124)*Math.sin(rad);
+    var by = 250 + (124)*Math.cos(rad);
+    grav.setAttribute('x1', bx.toFixed(1)); grav.setAttribute('y1', by.toFixed(1));
+    grav.setAttribute('x2', bx.toFixed(1)); grav.setAttribute('y2', (by+16).toFixed(1));
+    var z = ZONES.find(function(zo){return hr <= zo.max;});
+    zoneTxt.textContent = z.txt;
+    zoneNote.textContent = z.note;
+    pill.style.color = z.col;
+    pill.style.background = z.bg;
+  }
+  wind.addEventListener('input', update);
+  update();
+
+  /* ---- scroll reveal ---- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+})();
+</script>
+</body>
+</html>
