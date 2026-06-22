@@ -450,6 +450,11 @@
   .logentry h3{font-size:19px;color:var(--ink);margin:0 0 7px;}
   .logentry p{margin:0;font-size:15px;color:#33444a;line-height:1.6;}
 
+  /* ---------- packing grid ---------- */
+  .packgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;}
+  @media(max-width:820px){.packgrid{grid-template-columns:1fr;}}
+  .packgrid .blist{margin-top:6px;}
+
   /* ---------- closing checklist ---------- */
   .checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:38px;max-width:820px;}
   @media(max-width:680px){.checks{grid-template-columns:1fr;}}
@@ -541,6 +546,7 @@
           <li><a href="#enjoo">Enjoo</a></li>
           <li><a href="#emerg2">Incêndio &amp; socorros</a></li>
           <li><a href="#seguranca">Onde está tudo</a></li>
+          <li><a href="#levar">O que levar &amp; vestir</a></li>
           <li><a href="#check">Checklist de partida</a></li>
         </ul>
       </div>
@@ -665,6 +671,7 @@
           <li><a href="#enjoo">Enjoo</a></li>
           <li><a href="#emerg2">Incêndio &amp; socorros</a></li>
           <li><a href="#seguranca">Onde está tudo</a></li>
+          <li><a href="#levar">O que levar &amp; vestir</a></li>
           <li><a href="#check">Checklist de partida</a></li>
         </ul>
       </div>
@@ -1692,6 +1699,63 @@
       <div class="role"><h3>AIS (Camino 108)</h3><p>Mostra os navios à volta — e transmite a <b>tua</b> posição e nome. Ou seja, os grandes navios <b>veem-te</b>. Um enorme tranquilizador contra colisões.</p></div>
       <div class="role"><h3>Piloto automático</h3><p>O «tripulante extra»: segura o rumo enquanto tu tratas das velas ou de uma manobra.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT TO BRING ===================== -->
+<section class="pad" id="levar" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Para o estreante · o que levar</span>
+    <h2 class="lead-h">Prepara a mala (e o corpo)</h2>
+    <p class="sec-intro">A bordo não há lojas. Vestir bem e levar o essencial faz toda a diferença entre um dia bom e um dia a sofrer. Aqui fica o que preparar antes de sair.</p>
+    <div class="packgrid">
+      <div class="rcard">
+        <h3>🧥 Roupa (por camadas)</h3>
+        <ul class="blist">
+          <li><b>Corta-vento impermeável</b> — a peça-chave.</li>
+          <li>Um <b>agasalho</b>: no mar faz sempre mais frio do que em terra.</li>
+          <li>Vestir por <b>camadas</b>, fáceis de tirar e pôr.</li>
+          <li>Calças confortáveis (evita ganga, que demora a secar).</li>
+          <li>Uma muda de roupa seca, num saco fechado.</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <h3>👟 Pés &amp; mãos</h3>
+        <ul class="blist">
+          <li>Sapatos de <b>sola clara antiderrapante</b> (ténis servem; nada de saltos nem solas pretas que marcam o convés).</li>
+          <li>Meias extra.</li>
+          <li>Luvas leves, se fores mexer em cabos.</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <h3>🧴 Sol &amp; pele</h3>
+        <ul class="blist">
+          <li><b>Protetor solar</b> — e reaplica: o reflexo da água queima a dobrar.</li>
+          <li>Chapéu ou boné <b>com fixação</b> (o vento leva-os).</li>
+          <li>Óculos de sol, de preferência com cordão.</li>
+          <li>Baton para os lábios.</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <h3>🍎 Água &amp; comida</h3>
+        <ul class="blist">
+          <li><b>Água que chegue</b> — hidratar ajuda contra o enjoo.</li>
+          <li>Snacks leves e fruta; algo quente num termo se estiver fresco.</li>
+          <li>Antes de largar: evita álcool e comida pesada.</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <h3>🎒 Não te esqueças</h3>
+        <ul class="blist">
+          <li>Comprimidos para o enjoo, gengibre ou pulseiras — tomados <b>antes</b> de sair.</li>
+          <li>Medicação pessoal, se tomares.</li>
+          <li>Telemóvel carregado e <b>powerbank</b>, num saco à prova de água.</li>
+          <li>Ir à casa de banho antes de largar.</li>
+          <li>Documento de identificação… e boa disposição.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sec-intro" style="margin-top:26px"><strong>Regra de ouro:</strong> no mar há sempre mais vento e mais frio do que parece em terra. Na dúvida, leva uma camada a mais.</p>
   </div>
 </section>
 
