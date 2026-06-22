@@ -346,6 +346,52 @@
   .clist li:before{content:"";position:absolute;left:2px;top:18px;width:9px;height:9px;border:2px solid var(--port);transform:rotate(45deg);}
   .clist li b{color:var(--brass-soft);font-weight:600;}
 
+  /* ---------- definition / glossary list ---------- */
+  .deflist{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:30px;}
+  @media(max-width:760px){.deflist{grid-template-columns:1fr;}}
+  .deflist .d{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line-dk);}
+  .deflist .dt{font-family:"Bricolage Grotesque";font-weight:700;color:var(--ink);min-width:128px;flex:0 0 auto;font-size:15px;}
+  .deflist .dd{font-size:14.5px;color:#3a4a50;line-height:1.45;}
+
+  /* ---------- knots ---------- */
+  .knots{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px;}
+  @media(max-width:820px){.knots{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:460px){.knots{grid-template-columns:1fr;}}
+  .knot{background:linear-gradient(180deg,#0f2937,#0b1f2a);border:1px solid var(--line);border-radius:16px;padding:18px;}
+  .knot svg{width:100%;height:auto;display:block;background:radial-gradient(80% 70% at 50% 40%,rgba(127,169,184,.08),transparent 70%);border-radius:10px;}
+  .knot h3{font-size:17px;margin:14px 0 2px;}
+  .knot .en{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-soft);}
+  .knot p{font-size:13.5px;color:#C4D5DA;margin:8px 0 0;line-height:1.45;}
+
+  /* ---------- roles ---------- */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+  @media(max-width:820px){.roles{grid-template-columns:1fr;}}
+  .role{background:linear-gradient(180deg,#0f2937,#0b1f2a);border:1px solid var(--line);border-radius:16px;padding:22px;}
+  .role h3{font-size:18px;margin:0 0 8px;color:var(--brass-soft);}
+  .role p{margin:0;font-size:14.5px;color:#C4D5DA;}
+
+  /* ---------- brass-bullet list ---------- */
+  .blist{list-style:none;padding:0;margin:18px 0 0;}
+  .blist li{position:relative;padding:10px 0 10px 26px;border-bottom:1px solid var(--line);font-size:15.5px;color:#DCE7EA;line-height:1.5;}
+  .blist li:last-child{border-bottom:none;}
+  .blist li:before{content:"";position:absolute;left:3px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--brass);}
+  .blist li b{color:var(--brass-soft);}
+  .paper .blist li{border-color:var(--line-dk);color:#33444a;}
+  .paper .blist li b{color:#8a6312;}
+
+  /* ---------- FAQ ---------- */
+  .faq{margin-top:30px;border-top:1px solid var(--line-dk);}
+  .faq details{border-bottom:1px solid var(--line-dk);}
+  .faq summary{cursor:pointer;padding:18px 0;font-family:"Bricolage Grotesque";font-weight:600;font-size:18px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary:after{content:"+";color:var(--brass);font-weight:400;font-size:24px;flex:0 0 auto;}
+  .faq details[open] summary:after{content:"\2013";}
+  .faq p{margin:0 0 18px;color:#33444a;font-size:15.5px;line-height:1.6;}
+
+  /* ---------- map ---------- */
+  .mapfig{background:linear-gradient(180deg,#0e2735,#0a1c27);border:1px solid var(--line);border-radius:20px;padding:14px;}
+  .mapfig svg{width:100%;height:auto;display:block;}
+
   /* ---------- closing checklist ---------- */
   .checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:38px;max-width:820px;}
   @media(max-width:680px){.checks{grid-template-columns:1fr;}}
@@ -394,11 +440,21 @@
       <a href="#forte">Força</a>
       <a href="#bolina">Bolina</a>
       <a href="#bordo">Manobras</a>
+      <a href="#partes">Partes</a>
+      <a href="#nos">Nós</a>
+      <a href="#regras">Regras</a>
+      <a href="#atracar">Atracar</a>
+      <a href="#fundear">Fundear</a>
       <a href="#vento">Vento</a>
+      <a href="#aguas">Águas</a>
       <a href="#radio">Rádio</a>
       <a href="#mob">Homem ao mar</a>
       <a href="#afunda">Afundar?</a>
+      <a href="#motor">Motor</a>
+      <a href="#enjoo">Enjoo</a>
+      <a href="#instrumentos">Instrumentos</a>
       <a href="#check">Checklist</a>
+      <a href="#faq">FAQ</a>
     </nav>
   </div>
 </header>
@@ -827,6 +883,192 @@
   </div>
 </section>
 
+<!-- ===================== BOAT PARTS & GLOSSARY ===================== -->
+<section class="paper paper-grain pad" id="partes">
+  <div class="wrap reveal">
+    <span class="eyebrow">A bordo · vocabulário</span>
+    <h2 class="lead-h" style="color:var(--ink)">As partes do barco — e as palavras</h2>
+    <p class="sec-intro">Antes de aprenderes a fazer, ajuda saber como se chamam as coisas. Quando alguém grita «caça a escota a sotavento!», queres saber para onde olhar. Aqui ficam as partes do Portucale e os termos que vais ouvir a toda a hora.</p>
+
+    <div class="keelfig" style="background:linear-gradient(180deg,#0e2735,#0a1c27);margin-top:36px">
+      <svg viewBox="0 0 660 340" role="img" aria-label="Esquema das partes de um veleiro">
+        <defs><linearGradient id="hp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16384a"/><stop offset="1" stop-color="#0c2533"/></linearGradient>
+        <linearGradient id="sp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7FBFA"/><stop offset="1" stop-color="#D7E2E4"/></linearGradient></defs>
+        <line x1="20" y1="232" x2="640" y2="232" stroke="#3FA37C" stroke-opacity=".3" stroke-width="2" stroke-dasharray="3 6"/>
+        <!-- hull (proa to the right) -->
+        <path d="M120 232 Q140 264 220 268 L470 268 Q540 266 560 232 Q500 244 300 244 Q180 244 120 232 Z" fill="url(#hp)" stroke="#CBA14C" stroke-width="2.4"/>
+        <path d="M120 232 Q330 218 560 232" fill="none" stroke="#E0C282" stroke-width="2"/>
+        <!-- cockpit notch -->
+        <path d="M250 230 q40 16 90 0 l-6 12 q-40 10 -78 0 Z" fill="#0a1c27" stroke="#CBA14C" stroke-opacity=".4"/>
+        <!-- coachroof -->
+        <path d="M360 228 q50 -12 96 -2 l-4 12 -90 2 Z" fill="#0c2734" stroke="#CBA14C" stroke-opacity=".4"/>
+        <!-- keel + rudder -->
+        <path d="M300 244 L306 312 L326 312 L320 244 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-width="1.4"/>
+        <ellipse cx="313" cy="314" rx="26" ry="8" fill="#CBA14C"/>
+        <path d="M150 244 L150 290 L162 290 L168 244 Z" fill="#0b1f2a" stroke="#CBA14C" stroke-width="1.2"/>
+        <!-- mast + boom -->
+        <line x1="430" y1="226" x2="430" y2="40" stroke="#E0C282" stroke-width="3.4"/>
+        <line x1="430" y1="150" x2="320" y2="176" stroke="#E0C282" stroke-width="3"/>
+        <!-- mainsail + genoa -->
+        <path d="M430 56 L430 150 L322 174 Q400 130 430 56 Z" fill="url(#sp)" opacity=".95"/>
+        <path d="M432 60 Q540 150 560 230 Q480 236 440 230 Q436 150 432 60 Z" fill="url(#sp)" opacity=".88"/>
+        <!-- labels -->
+        <g font-family="Spline Sans Mono" font-size="12" fill="#cfe3d8">
+          <g stroke="#7FA9B8" stroke-width="1" opacity=".6"><line x1="430" y1="44" x2="430" y2="22"/></g>
+          <text x="430" y="16" text-anchor="middle">Mastro</text>
+          <text x="372" y="110" text-anchor="middle">Vela grande</text>
+          <text x="520" y="120">Genoa</text>
+          <g stroke="#7FA9B8" stroke-width="1" opacity=".6"><line x1="360" y1="168" x2="345" y2="150"/></g>
+          <text x="300" y="146">Retranca</text>
+          <text x="592" y="220">Proa →</text>
+          <text x="70" y="220">← Popa</text>
+          <g stroke="#7FA9B8" stroke-width="1" opacity=".6"><line x1="295" y1="232" x2="270" y2="206"/></g>
+          <text x="232" y="200">Poço</text>
+          <g stroke="#7FA9B8" stroke-width="1" opacity=".6"><line x1="313" y1="300" x2="360" y2="300"/></g>
+          <text x="366" y="304">Quilha (lastro)</text>
+          <g stroke="#7FA9B8" stroke-width="1" opacity=".6"><line x1="158" y1="280" x2="120" y2="298"/></g>
+          <text x="40" y="302">Leme</text>
+          <text x="210" y="262" fill="#9fb3bb">Casco</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="deflist">
+      <div class="d"><span class="dt">Proa / Popa</span><span class="dd">A frente e a traseira do barco.</span></div>
+      <div class="d"><span class="dt">Bombordo</span><span class="dd">O lado esquerdo, virado para a proa.</span></div>
+      <div class="d"><span class="dt">Estibordo</span><span class="dd">O lado direito, virado para a proa.</span></div>
+      <div class="d"><span class="dt">Barlavento</span><span class="dd">O lado de onde vem o vento.</span></div>
+      <div class="d"><span class="dt">Sotavento</span><span class="dd">O lado abrigado, oposto ao vento.</span></div>
+      <div class="d"><span class="dt">Quilha</span><span class="dd">A barbatana lastrada por baixo — o que endireita o barco.</span></div>
+      <div class="d"><span class="dt">Leme</span><span class="dd">O que governa a direção, ligado à roda/cana.</span></div>
+      <div class="d"><span class="dt">Retranca</span><span class="dd">A barra horizontal no fundo da vela grande (boom).</span></div>
+      <div class="d"><span class="dt">Escota</span><span class="dd">O cabo que controla uma vela (caçar = puxar; largar = soltar).</span></div>
+      <div class="d"><span class="dt">Adriça</span><span class="dd">O cabo que iça uma vela pelo mastro.</span></div>
+      <div class="d"><span class="dt">Winch</span><span class="dd">O tambor que multiplica a tua força para caçar.</span></div>
+      <div class="d"><span class="dt">Amura</span><span class="dd">O bordo em que navegas — amura a estibordo ou a bombordo.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KNOTS ===================== -->
+<section class="pad" id="nos" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">A bordo · cabos</span>
+    <h2 class="lead-h">Quatro nós e estás safo</h2>
+    <p class="sec-intro">Não precisas de saber dezenas. Estes quatro resolvem quase tudo a bordo. Aprende-os com um cabo na mão — repetir dez vezes vale mais que ler mil.</p>
+    <div class="knots">
+      <div class="knot">
+        <svg viewBox="0 0 120 110" role="img" aria-label="Lais de guia"><circle cx="60" cy="58" r="26" fill="none" stroke="#E0C282" stroke-width="5"/><path d="M60 84 C60 100 40 100 40 86" fill="none" stroke="#CBA14C" stroke-width="5"/><path d="M48 44 q12 -14 24 0" fill="none" stroke="#F7FBFA" stroke-width="4"/></svg>
+        <h3>Lais de guia</h3><div class="en">bowline</div>
+        <p>O rei dos nós. Faz uma argola fixa que não aperta nem escorrega — e solta-se sempre, mesmo depois de muita tensão.</p>
+      </div>
+      <div class="knot">
+        <svg viewBox="0 0 120 110" role="img" aria-label="Volta do fiel"><rect x="54" y="14" width="12" height="84" rx="3" fill="#11303f" stroke="#CBA14C" stroke-width="2"/><path d="M30 44 L90 36" stroke="#E0C282" stroke-width="5" fill="none"/><path d="M30 70 L90 62" stroke="#E0C282" stroke-width="5" fill="none"/><path d="M40 36 L80 70" stroke="#CBA14C" stroke-width="5" fill="none"/></svg>
+        <h3>Volta do fiel</h3><div class="en">clove hitch</div>
+        <p>Rápida para prender uma defensa a um varão ou um cabo a um poste. Fácil de ajustar.</p>
+      </div>
+      <div class="knot">
+        <svg viewBox="0 0 120 110" role="img" aria-label="Nó de oito"><path d="M60 20 C30 30 30 50 60 56 C90 62 90 82 60 92 C40 86 40 70 60 56 C80 50 80 34 60 20 Z" fill="none" stroke="#E0C282" stroke-width="5"/></svg>
+        <h3>Nó de oito</h3><div class="en">figure-eight</div>
+        <p>O nó de batente: na ponta das escotas, impede-as de fugir pelo olhal. Nunca aperta a ponto de não sair.</p>
+      </div>
+      <div class="knot">
+        <svg viewBox="0 0 120 110" role="img" aria-label="Volta de cunho"><rect x="34" y="50" width="52" height="12" rx="6" fill="#11303f" stroke="#CBA14C" stroke-width="2"/><circle cx="34" cy="56" r="7" fill="#0b1f2a" stroke="#CBA14C" stroke-width="2"/><circle cx="86" cy="56" r="7" fill="#0b1f2a" stroke="#CBA14C" stroke-width="2"/><path d="M20 86 L46 44 L74 70 L100 30" fill="none" stroke="#E0C282" stroke-width="5"/></svg>
+        <h3>Volta de cunho</h3><div class="en">cleat hitch</div>
+        <p>Como prendes um cabo a um cunho, no cais ou no barco. Umas voltas em oito e um fecho.</p>
+      </div>
+    </div>
+    <p class="clnote" style="color:#7f97a0">Dica: pratica em casa com um pedaço de cabo. Há animações passo-a-passo em sites como animatedknots.com.</p>
+  </div>
+</section>
+
+<!-- ===================== COLREGS ===================== -->
+<section class="paper paper-grain pad" id="regras">
+  <div class="wrap reveal">
+    <span class="eyebrow">Segurança · regras de evitação</span>
+    <h2 class="lead-h" style="color:var(--ink)">Quem dá passagem a quem</h2>
+    <p class="sec-intro">No mar há um código de trânsito (as «regras de abordagem»). Sabê-lo tira o stress dos cruzamentos — passas a saber, num relance, se és tu que te desvias ou se mantens o rumo.</p>
+    <div class="split" style="margin-top:40px">
+      <div class="keelfig" style="background:linear-gradient(180deg,#0e2735,#0a1c27)">
+        <svg viewBox="0 0 360 300" role="img" aria-label="Estibordo manda: o veleiro com vento a estibordo mantém o rumo">
+          <g stroke="#7FA9B8" stroke-width="2.2" fill="#7FA9B8"><line x1="180" y1="14" x2="180" y2="46"/><path d="M180 52 l-6 -11 h12 z"/><text x="180" y="11" text-anchor="middle" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">VENTO</text></g>
+          <!-- stand-on (green) starboard tack -->
+          <g transform="translate(110 200) rotate(18)"><path d="M-12 30 L-7 -34 L7 -34 L12 30 Z" fill="#10303f" stroke="#3FA37C" stroke-width="2.5"/><line x1="0" y1="-34" x2="0" y2="20" stroke="#3FA37C" stroke-width="2"/></g>
+          <text x="110" y="252" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#7fd0b3">estibordo</text>
+          <text x="110" y="266" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#7fd0b3">mantém rumo</text>
+          <!-- give-way (red) port tack -->
+          <g transform="translate(250 130) rotate(-30)"><path d="M-12 30 L-7 -34 L7 -34 L12 30 Z" fill="#10303f" stroke="#C8503F" stroke-width="2.5"/><line x1="0" y1="-34" x2="0" y2="20" stroke="#C8503F" stroke-width="2"/></g>
+          <text x="250" y="92" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e6a99e">bombordo</text>
+          <text x="250" y="78" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e6a99e">dá passagem</text>
+          <path d="M232 150 q-26 26 -78 40" fill="none" stroke="#C8503F" stroke-width="2" stroke-dasharray="4 4"/><path d="M150 192 l11 -2 -4 -9 z" fill="#C8503F"/>
+        </svg>
+      </div>
+      <div class="reassure" style="color:var(--ink)">
+        <ul class="blist">
+          <li><b>Motor dá passagem à vela</b> — em regra. Mas assume sempre que um navio grande <b>não te consegue</b> desviar: afasta-te do tráfego comercial e dos canais do porto.</li>
+          <li><b>Estibordo manda.</b> Entre dois veleiros, quem tem o vento por bombordo dá passagem a quem o tem por estibordo.</li>
+          <li><b>Mesmo bordo:</b> o barco a barlavento (mais acima do vento) afasta-se do que está a sotavento.</li>
+          <li><b>Quem ultrapassa, desvia-se.</b> Sempre.</li>
+          <li><b>De frente, a motor:</b> ambos guinam para estibordo.</li>
+        </ul>
+        <p class="safe" style="margin-top:18px;color:#33444a"><b>Na dúvida:</b> guina cedo, guina de forma clara, e comunica. Um desvio grande e atempado vale mais que mil cálculos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOCKING & ROLES ===================== -->
+<section class="pad" id="atracar" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Manobras · atracação</span>
+    <h2 class="lead-h">Atracar sem drama</h2>
+    <p class="sec-intro">É o momento que mais assusta no dia-a-dia — e o que mais se treina (no Portucale e até no simulador). A regra-mãe é simples: <strong>nunca te aproximes mais depressa do que estás disposto a bater</strong>. Devagar resolve quase tudo.</p>
+    <div class="split" style="margin-top:40px">
+      <div class="reassure">
+        <h3 style="font-size:21px;margin:0 0 14px">A aproximação</h3>
+        <ol class="steps">
+          <li>Prepara <b>antes</b>: defensas no lado certo e cabos (springs incluídos) prontos a passar.</li>
+          <li>Briefing rápido: quem sai para o cais, quem trata de cada cabo.</li>
+          <li>Aproxima a passo de homem, usando o motor (vante/ré) para mandar na velocidade.</li>
+          <li>Conta com o vento e a corrente — o Portucale tende a cair para bombordo com nortada.</li>
+          <li>Encosta, passa o cabo de proa e um spring, e só depois acerta o resto. Sem pressa.</li>
+        </ol>
+      </div>
+      <div class="keelfig" style="background:linear-gradient(180deg,#0f2937,#0b1f2a);padding:24px">
+        <h3 style="font-size:20px;margin:0 0 12px;color:var(--brass)">Atracar de popa (Marina de Leça)</h3>
+        <p class="rnote" style="margin:0 0 12px">Muito comum nas marinas: o barco fica de popa para o pontão.</p>
+        <ol class="steps">
+          <li>Alinha a popa com o lugar, controlando com pequenos toques de ré.</li>
+          <li>Apanha a <b>retenida</b> (lazy line) e leva-a à proa para a manter direita.</li>
+          <li>Passa os dois cabos de popa ao pontão e ajusta — proa segura, popa segura.</li>
+        </ol>
+      </div>
+    </div>
+    <h3 style="font-size:21px;margin:44px 0 0">Quem faz o quê</h3>
+    <div class="roles">
+      <div class="role"><h3>Comandante</h3><p>Decide, governa o leme e dá as ordens. Mantém a visão geral e a calma — o resto da tripulação segue-o.</p></div>
+      <div class="role"><h3>Proeiro</h3><p>À proa: vigia, trata dos cabos da frente e da âncora, e comunica ao comandante o que vê.</p></div>
+      <div class="role"><h3>Escotas &amp; cabos</h3><p>Caça e larga as velas nas viragens, e passa os cabos nas manobras de porto. Mãos sempre longe dos winches sob tensão.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ANCHORING ===================== -->
+<section class="paper paper-grain pad" id="fundear">
+  <div class="wrap reveal">
+    <span class="eyebrow">Manobras · fundear</span>
+    <h2 class="lead-h" style="color:var(--ink)">Largar ferro com confiança</h2>
+    <p class="sec-intro">Fundear bem é o que transforma uma travessia numa tarde de banhos numa enseada — como as do Areoso ou de Sálvora, nas Rias. Tem pouca ciência e muito método.</p>
+    <ul class="blist" style="max-width:760px">
+      <li><b>Escolhe o sítio:</b> abrigado do vento e da vaga, com bom fundo (areia ou lama agarram melhor que pedra ou ervas) e espaço para o barco girar.</li>
+      <li><b>Filame (scope):</b> larga cerca de <b>5× a profundidade</b> em corrente. 5 metros de fundo → pelo menos 25 metros de corrente. Com mais vento, mais filame.</li>
+      <li><b>Técnica:</b> aproxima contra o vento, pára, <b>baixa</b> o ferro (não o atires), deixa cair para trás e fá-lo morder com um toque suave de ré.</li>
+      <li><b>Confirma que não garra:</b> escolhe dois pontos em terra alinhados (um enfiamento) e vê se se mantêm. Se deslizam, o ferro não pegou.</li>
+      <li><b>Licenças:</b> em zonas protegidas (como o Illote Areoso) pode ser preciso autorização para fundear — confirma antes, como o Portucale aprendeu da maneira difícil.</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ===================== BEAUFORT / WHEN TO SAIL ===================== -->
 <section class="paper paper-grain pad" id="vento">
   <div class="wrap reveal">
@@ -843,6 +1085,79 @@
         <tr><td class="f">F7+</td><td class="f">28+ nós</td><td>Para quem está preparado e treinado. A maior parte dos passeios não sai.</td><td><span class="tag care">cautela</span></td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<!-- ===================== WEATHER, TIDES & BAR CROSSINGS ===================== -->
+<section class="pad" id="meteo" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Planeamento · meteo e marés</span>
+    <h2 class="lead-h">Ler o tempo, ler a maré</h2>
+    <p class="sec-intro">A decisão mais importante de um dia de mar toma-se em terra, na véspera: vais ou não vais. E baseia-se em duas coisas — o que o céu vai fazer e o que a água vai fazer.</p>
+    <div class="split" style="margin-top:40px">
+      <div class="reassure">
+        <h3 style="font-size:21px;margin:0 0 12px">Onde ver a meteo</h3>
+        <ul class="blist">
+          <li><b>Windy</b> — vento, rajadas e vaga, hora a hora. O mais visual.</li>
+          <li><b>IPMA</b> — o boletim costeiro oficial e os avisos para a costa portuguesa.</li>
+          <li><b>NAVTEX / VHF</b> — avisos à navegação e boletins recebidos a bordo.</li>
+          <li><b>A marina e os locais</b> — quem conhece a barra sabe coisas que nenhuma app diz.</li>
+        </ul>
+        <p class="safe" style="margin-top:16px"><b>Vê sempre a vaga, não só o vento.</b> Um vento fraco com vaga grande de fundo pode dar um dia desconfortável.</p>
+      </div>
+      <div class="keelfig" style="background:linear-gradient(180deg,#0f2937,#0b1f2a);padding:24px">
+        <h3 style="font-size:20px;margin:0 0 12px;color:var(--brass)">Passagens de barra</h3>
+        <p class="rnote" style="margin:0 0 12px">As barras do <b>Douro</b> e de <b>Aveiro</b> são o ponto mais sensível da navegação local. Numa barra, o rio e o mar encontram-se — e podem formar-se rebentações perigosas.</p>
+        <ul class="blist">
+          <li>Atravessa perto da <b>preia-mar</b> e com a maré a <b>encher</b>.</li>
+          <li>Evita a <b>vazante contra a ondulação</b> — é quando se formam as vagas que rebentam.</li>
+          <li>Na dúvida sobre o estado da barra, contacta o controlo do porto pelo VHF antes de entrar.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOME WATERS ===================== -->
+<section class="pad" id="aguas" style="background:var(--navy)">
+  <div class="wrap reveal">
+    <span class="eyebrow">As águas de casa</span>
+    <h2 class="lead-h">Por onde anda o Portucale</h2>
+    <p class="sec-intro">A partir de Leixões abre-se um mundo: passeios curtos ao Douro, saltos pela costa até à Póvoa ou Aveiro, e a grande travessia até às Rias Baixas da Galiza — talvez o melhor cruzeiro a um dia de distância.</p>
+    <div class="mapfig" style="margin-top:34px">
+      <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático das águas de navegação do Portucale">
+        <rect width="520" height="360" fill="#0a1c27"/>
+        <!-- Galicia land (top-left) -->
+        <path d="M0 0 L210 0 L190 50 Q150 70 120 60 L70 90 L0 100 Z" fill="#13303f" stroke="#3FA37C" stroke-opacity=".25"/>
+        <!-- Portugal land (right) -->
+        <path d="M520 0 L520 360 L330 360 Q360 240 340 150 Q330 70 360 0 Z" fill="#13303f" stroke="#3FA37C" stroke-opacity=".25"/>
+        <text x="70" y="30" font-family="Spline Sans Mono" font-size="12" fill="#6f9aa8">GALIZA</text>
+        <text x="450" y="30" font-family="Spline Sans Mono" font-size="12" fill="#6f9aa8">PORTUGAL</text>
+        <!-- routes -->
+        <g stroke="#CBA14C" stroke-width="1.6" stroke-dasharray="3 5" opacity=".55" fill="none">
+          <path d="M352 150 L150 60"/>
+          <path d="M352 150 L352 70"/>
+          <path d="M352 150 L352 250"/>
+          <path d="M352 150 L370 110"/>
+        </g>
+        <!-- ports -->
+        <g font-family="Spline Sans Mono" font-size="12">
+          <circle cx="352" cy="150" r="7" fill="#CBA14C" stroke="#0a1c27" stroke-width="2"/>
+          <text x="338" y="146" text-anchor="end" fill="#E0C282">Leixões ★</text>
+          <text x="338" y="162" text-anchor="end" fill="#8aa6b0">(casa)</text>
+          <circle cx="370" cy="110" r="4" fill="#3FA37C"/><text x="380" y="108" fill="#bfe0d2">Póvoa · 12 M</text>
+          <circle cx="352" cy="186" r="4" fill="#3FA37C"/><text x="362" y="200" fill="#bfe0d2">Douro · 4 M</text>
+          <circle cx="352" cy="252" r="4" fill="#3FA37C"/><text x="362" y="256" fill="#bfe0d2">Aveiro · 35 M</text>
+          <circle cx="150" cy="60" r="5" fill="#E0C282"/><text x="160" y="58" fill="#e8d3a6">Rias Baixas</text>
+          <text x="160" y="73" fill="#8aa6b0" font-size="11">Ribeira · Areoso · ~80 M</text>
+        </g>
+      </svg>
+    </div>
+    <ul class="blist" style="max-width:820px">
+      <li><b>O Douro (~4 M):</b> entrar a barra, fundear ao largo da Afurada para um piquenique, subir até à Ponte Luís I. O passeio de assinatura.</li>
+      <li><b>Póvoa de Varzim (~12 M) e Aveiro (~35 M):</b> saltos pela costa, óptimos para ganhar milhas e dormir fora.</li>
+      <li><b>Rias Baixas (~80 M, travessia de noite):</b> Ribeira, o Illote Areoso, Combarro, A Pobra — águas abrigadas, ilhas, golfinhos e marisco. O grande cruzeiro de verão.</li>
+    </ul>
   </div>
 </section>
 
@@ -1092,6 +1407,127 @@
   </div>
 </section>
 
+<!-- ===================== ENGINE FAILURE ===================== -->
+<section class="pad" id="motor" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Emergência · motor</span>
+    <h2 class="lead-h">Se o motor falhar (não entres em pânico)</h2>
+    <p class="sec-intro">O Portucale já teve a sua quota de sustos com o motor — e é por isso mesmo que vale a pena ter isto claro. Lembra-te do essencial: isto é um <strong>veleiro</strong>. Se o motor parar, tu ainda tens o vento.</p>
+    <div class="split" style="margin-top:40px">
+      <div class="reassure">
+        <h3 style="font-size:21px;margin:0 0 12px">Primeiro, governa o barco</h3>
+        <ol class="steps">
+          <li>Mantém a calma e o rumo. Se há vento, iça pano e recupera governo à vela.</li>
+          <li>Afasta-te de perigos — rochas, paredões, outros barcos, a entrada da barra.</li>
+          <li>Se estiveres sobre fundo seguro e pouco fundo, podes <b>fundear</b> para travar a deriva enquanto resolves.</li>
+        </ol>
+      </div>
+      <div class="keelfig" style="background:linear-gradient(180deg,#0f2937,#0b1f2a);padding:24px">
+        <h3 style="font-size:20px;margin:0 0 12px;color:var(--brass)">Depois, o combustível</h3>
+        <p class="rnote" style="margin:0 0 12px">A causa habitual no Portucale é sujidade ou ar no gasóleo. Por ordem:</p>
+        <ul class="blist">
+          <li>Verifica o <b>nível</b> — e o bidão de <b>reserva</b> a bordo.</li>
+          <li>Filtro entupido? Ar no circuito?</li>
+          <li>Usa a <b>pera</b> (bomba manual) para empurrar gasóleo e <b>sangra</b> o circuito — o diário de bordo descreve exactamente este gesto.</li>
+          <li>Se não pega e derivas para perigo: <b>PANE-PANE</b> e pede reboque.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="goldrule" style="color:var(--brass)">O motor é uma conveniência, não um suporte de vida. O barco navega sem ele.</p>
+  </div>
+</section>
+
+<!-- ===================== SEASICKNESS ===================== -->
+<section class="paper paper-grain pad" id="enjoo">
+  <div class="wrap reveal">
+    <span class="eyebrow">A bordo · enjoo</span>
+    <h2 class="lead-h" style="color:var(--ink)">Enjoo: normal, e quase sempre evitável</h2>
+    <p class="sec-intro">Enjoar não é fraqueza — acontece a quase toda a gente, até a velejadores experientes. A boa notícia: previne-se, e passa. (No diário de bordo houve quem enjoasse… por estar a olhar demasiado tempo para o telemóvel. Fica a lição.)</p>
+    <div class="split" style="margin-top:38px">
+      <div class="reassure" style="color:var(--ink)">
+        <h3 style="font-size:20px;margin:0 0 6px">Prevenir</h3>
+        <ul class="blist">
+          <li>Descansa e hidrata-te na véspera; evita álcool e comida pesada.</li>
+          <li>Fica no convés, ao ar livre, com os <b>olhos no horizonte</b>.</li>
+          <li>Pega no <b>leme</b> — governar mantém o enjoo à distância.</li>
+          <li>Não vás lá para baixo nem fiques a olhar para o telemóvel.</li>
+          <li>Medicação, gengibre ou pulseiras: toma <b>antes</b> de largar, nunca depois.</li>
+        </ul>
+      </div>
+      <div class="reassure" style="color:var(--ink)">
+        <h3 style="font-size:20px;margin:0 0 6px">Se já estás enjoado</h3>
+        <ul class="blist">
+          <li>Senta-te no <b>centro do poço</b>, olhos no horizonte.</li>
+          <li>Pequenos goles de água, ar fresco na cara.</li>
+          <li>Passa à medida que ganhas «pernas de mar» — costuma melhorar em um a dois dias.</li>
+        </ul>
+        <p class="safe" style="margin-top:16px;color:#33444a"><b>Dica de ouro:</b> planeia as primeiras saídas com bom tempo e mar calmo. A confiança constrói-se em dias bonitos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FIRE & FIRST AID ===================== -->
+<section class="pad" id="emerg2" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Segurança · outras emergências</span>
+    <h2 class="lead-h">Incêndio e primeiros socorros</h2>
+    <div class="radio-cards" style="margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+      <div class="rcard">
+        <h3>Incêndio a bordo</h3>
+        <ul class="blist">
+          <li>Prevê: gás fechado quando não está em uso; motor e instalação eléctrica vigiados.</li>
+          <li>Sabe <b>onde estão os extintores</b> antes de precisares.</li>
+          <li>Fogo na cozinha: <b>abafa</b> (tampa, manta). Fogo no motor: <b>não abras</b> a tampa — abafa por dentro e corta o combustível e o gás.</li>
+          <li>Descontrolado: <b>MEDÊ</b> e prepara o abandono ordenado.</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <h3>Primeiros socorros</h3>
+        <ul class="blist">
+          <li>Kit a bordo — e toda a gente sabe onde está.</li>
+          <li>O mais comum: cortes, queimaduras de sol, insolação, enjoo… e o frio.</li>
+          <li><b>Hipotermia</b> (ex. após homem ao mar): tira a roupa molhada, aquece devagar, abriga.</li>
+          <li>Dúvida médica grave: <b>PANE-PANE / MEDÊ</b> — o MRCC dá apoio médico por rádio.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SAFETY GEAR ===================== -->
+<section class="paper paper-grain pad" id="seguranca">
+  <div class="wrap reveal">
+    <span class="eyebrow">A bordo · onde está tudo</span>
+    <h2 class="lead-h" style="color:var(--ink)">Conhece o barco antes de precisares</h2>
+    <p class="sec-intro">No briefing de boas-vindas — que se faz sempre, ao chegar a bordo — aprende onde vive cada coisa. Numa emergência não há tempo para andar à procura.</p>
+    <ul class="blist" style="max-width:820px">
+      <li><b>Coletes salva-vidas</b> (um por pessoa) e arneses.</li>
+      <li><b>Jangada / balsa salva-vidas</b> — inspeccionada (a do Portucale foi vista em 2025).</li>
+      <li><b>Sinais pirotécnicos</b> — foguetes e fachos de mão, dentro da validade.</li>
+      <li><b>Extintores</b> e <b>kit de primeiros socorros</b>.</li>
+      <li><b>Bujões de madeira</b> cónicos junto a cada passa-casco.</li>
+      <li><b>Boia / ferradura</b> e o cabo de homem-ao-mar.</li>
+      <li><b>VHF</b> (fixo e portátil, se houver), lanternas, e o painel das <b>válvulas de fundo</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== INSTRUMENTS ===================== -->
+<section class="pad" id="instrumentos" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">A bordo · eletrónica</span>
+    <h2 class="lead-h">Os instrumentos, sem medo dos ecrãs</h2>
+    <p class="sec-intro">O Portucale tem boa eletrónica. Não tens de saber tudo — mas perceber o que cada coisa faz tira-te o nervoso miudinho à frente dos mostradores.</p>
+    <div class="roles" style="grid-template-columns:repeat(2,1fr)">
+      <div class="role"><h3>eS75 (plotter)</h3><p>A tua carta náutica no ecrã: posição, rota, profundidade e o botão <b>MOB</b> que marca um homem ao mar.</p></div>
+      <div class="role"><h3>Sonda · Vento · Velocidade</h3><p>Os mostradores ST50: a água debaixo da quilha, o ângulo e a força do vento, e a velocidade na água.</p></div>
+      <div class="role"><h3>AIS (Camino 108)</h3><p>Mostra os navios à volta — e transmite a <b>tua</b> posição e nome. Ou seja, os grandes navios <b>veem-te</b>. Um enorme tranquilizador contra colisões.</p></div>
+      <div class="role"><h3>Piloto automático</h3><p>O «tripulante extra»: segura o rumo enquanto tu tratas das velas ou de uma manobra.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PRE-DEPARTURE CHECKLIST ===================== -->
 <section class="pad" id="check" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
   <div class="wrap reveal">
@@ -1183,6 +1619,63 @@
       </figure>
     </div>
     <p class="gcredit">Fotografias do veleiro «Baremka», um Dufour 34 de 1974 · cortesia de <a href="https://sailingmutiny.com/tour-of-baremka-our-first-boat-1974-dufour-34/" target="_blank" rel="noopener">Sailing Mutiny</a>. Não são imagens do próprio Portucale, mas de uma embarcação irmã da mesma série.</p>
+  </div>
+</section>
+
+<!-- ===================== HISTORY ===================== -->
+<section class="pad" id="historia" style="background:var(--navy)">
+  <div class="wrap reveal">
+    <span class="eyebrow">A embarcação · história</span>
+    <h2 class="lead-h">De «Diablotin» a Portucale</h2>
+    <div class="reassure" style="max-width:720px;margin-top:24px">
+      <p>Nasceu em <strong>1974</strong>, em La Rochelle, das mãos de Michel Dufour — um dos pioneiros dos veleiros em fibra de vidro. Durante anos cruzou a Europa sob bandeira francesa, com o nome <strong>«Diablotin»</strong>.</p>
+      <p>Veio depois para o norte de Portugal e foi rebatizada <strong>Portucale</strong> — o nome romano da cidade do Porto, a raiz do próprio nome do país. Um veleiro clássico francês que ganhou casa atlântica.</p>
+      <p>Hoje é o barco da <strong>Associação de Navegadores Oceânicos</strong>, em Leça da Palmeira / Leixões, onde os sócios se revezam ao leme. Cada saída — um passeio ao Douro, uma travessia às Rias — fica escrita no diário de bordo, que já vai em dezenas de viagens. Esta página é mais um capítulo dessa história: a parte em que te juntas à tripulação.</p>
+    </div>
+    <div class="chips" style="margin-top:26px">
+      <span class="chip"><b>1974</b> · La Rochelle</span>
+      <span class="chip">projeto de <b>Michel Dufour</b></span>
+      <span class="chip">ex-<b>Diablotin</b> 🇫🇷</span>
+      <span class="chip">casa: <b>Leixões</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="paper paper-grain pad" id="faq">
+  <div class="wrap reveal">
+    <span class="eyebrow">Para quem nunca velejou</span>
+    <h2 class="lead-h" style="color:var(--ink)">As perguntas que toda a gente faz</h2>
+    <div class="faq">
+      <details>
+        <summary>Tenho de saber nadar?</summary>
+        <p>Ajuda e dá confiança, mas a regra de ouro é outra: usas colete e fazemos tudo para te manter <em>dentro</em> do barco. Saber nadar é o plano Z, não o plano A.</p>
+      </details>
+      <details>
+        <summary>Vou enjoar?</summary>
+        <p>Talvez um pouco, à primeira. Mas previne-se (olhos no horizonte, ar fresco, longe do telemóvel) e passa depressa. Por isso escolhemos dias calmos para as primeiras saídas. Vê a secção do enjoo.</p>
+      </details>
+      <details>
+        <summary>Nunca velejei — posso mesmo ir?</summary>
+        <p>É exactamente para isso que isto serve. Começas com tarefas simples, aprendes a fazer vendo e experimentando, e cada um a bordo já foi estreante um dia. Ninguém nasce ensinado.</p>
+      </details>
+      <details>
+        <summary>É perigoso?</summary>
+        <p>Velejar com bom senso é estatisticamente seguro. O barco é feito para te cuidar — inclina mas endireita-se, e quase nunca afunda (vê «ela vira?» e «afundar?»). E nós verificamos sempre meteo, mar e equipamento antes de largar.</p>
+      </details>
+      <details>
+        <summary>E se o tempo virar a meio?</summary>
+        <p>Planeamos para evitar surpresas e temos sempre saída: reduzir pano (rizar), procurar abrigo ou regressar. O barco aguenta bastante mais do que aquilo que vais sentir.</p>
+      </details>
+      <details>
+        <summary>Tenho de ajudar nas manobras?</summary>
+        <p>Tanto quanto quiseres. Há sempre o que fazer e é meio caminho para a confiança — mas também podes simplesmente apreciar a viagem. Sem pressão.</p>
+      </details>
+      <details>
+        <summary>Posso levar o telemóvel?</summary>
+        <p>Claro — para fotos é ótimo. Só um aviso amigo: ficar a olhar para o ecrã é a receita certa para enjoar. Olha antes para o horizonte.</p>
+      </details>
+    </div>
   </div>
 </section>
 
