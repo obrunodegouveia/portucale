@@ -463,6 +463,14 @@
   .speedrows li:last-child{border-bottom:none;}
   .speedrows span{color:#cfe0e3;font-size:15.5px;}
   .speedrows b{font-family:"Spline Sans Mono",monospace;color:var(--brass-soft);font-size:16px;white-space:nowrap;}
+  .vs2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 6px;}
+  @media(max-width:600px){.vs2{grid-template-columns:1fr;}}
+  .vscol{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:rgba(231,222,200,.03);}
+  .vscol .vc-h{font-family:"Spline Sans Mono",monospace;font-size:13px;color:var(--brass-soft);margin-bottom:8px;letter-spacing:.03em;}
+  .vscol ul{list-style:none;margin:0;padding:0;}
+  .vscol li{font-size:14.5px;color:#dce7ea;line-height:1.4;padding:5px 0;border-bottom:1px solid rgba(231,222,200,.07);}
+  .vscol li:last-child{border-bottom:none;}
+  .vscol b{color:#f0d9a3;}
   .blist li b{color:var(--brass-soft);}
   .paper .blist li{border-color:var(--line-dk);color:#33444a;}
   .paper .blist li b{color:#8a6312;}
@@ -1145,6 +1153,31 @@
       </ul>
       <p>O tecto é a <b>velocidade de casco (~7 nós)</b>. E o conforto não se mede pelos nós, mede-se pelo <b>adornar e pelo mar</b>: rizada e direita a 6 nós ela é mais rápida — e muito mais confortável — do que deitada na borda a 6,2. Se passas dos ~20° de adorno ou enterras a proa, rizar quase nunca te tira velocidade; costuma dar.</p>
       <p class="sb-rule"><b>Vento ideal a largo para a máxima:</b> <b>Força 4–5 (~15–20 nós reais)</b>, pano cheio, largo ~110°–120°. Abaixo, ainda não enche a velocidade de casco; acima, não ganhas nós — só adornar e leme (hora do 1.º rizo).</p>
+    </div>
+
+    <div class="speedbox">
+      <div class="sb-k">Través vs. largo — quem chega aos 7 primeiro</div>
+      <div class="vs2">
+        <div class="vscol">
+          <div class="vc-h">Través · ~90°</div>
+          <ul>
+            <li>Vento real p/ os 7 nós: <b>~13–15 nós</b></li>
+            <li>Aparente <b>mais forte</b> (somas o avanço)</li>
+            <li>Adorna <b>mais</b>, mais leme, menos seco</li>
+            <li>O atalho quando <b>falta vento</b></li>
+          </ul>
+        </div>
+        <div class="vscol">
+          <div class="vc-h">Largo · ~110–120°</div>
+          <ul>
+            <li>Vento real p/ os 7 nós: <b>~16–20 nós</b></li>
+            <li>Aparente <b>mais baixo</b> (parte vem de trás)</li>
+            <li>Vai <b>direito</b>, leve no leme, seco</li>
+            <li>A forma <b>confortável</b> de manter os 7</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sb-rule"><b>O teto é o mesmo nos dois: ~7 nós (velocidade de casco).</b> O través não anda mais rápido — chega aos 7 com <b>menos vento</b>, mas a adornar mais. O largo precisa de mais uns nós e mantém-nos <b>direito e confortável</b>. Mais do que isso, só a surfar a descer uma vaga.</p>
     </div>
   </div>
 </section>
