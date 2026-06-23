@@ -452,6 +452,12 @@
   .quickrumos button{font-family:"Spline Sans Mono",monospace;font-size:12.5px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(231,222,200,.04);color:var(--chart);cursor:pointer;transition:background .2s,border-color .2s,color .2s;}
   .quickrumos button:hover,.quickrumos button.on{background:rgba(203,161,76,.9);border-color:var(--brass);color:#08171f;}
   .trimnote{margin:18px 0 0;font-size:14.5px;color:#9fb3bb;line-height:1.5;}
+  /* ---------- max-speed callout ---------- */
+  .speedbox{margin:30px 0 0;padding:22px 24px;border:1px solid var(--brass);border-radius:16px;background:linear-gradient(180deg,rgba(203,161,76,.10),rgba(203,161,76,.02));}
+  .speedbox .sb-k{font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-soft);margin-bottom:10px;}
+  .speedbox p{margin:0 0 10px;color:#e8eef0;font-size:17px;line-height:1.55;}
+  .speedbox p:last-child{margin-bottom:0;}
+  .speedbox .sb-rule{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:#cfe0e3;font-size:15.5px;}
   .blist li b{color:var(--brass-soft);}
   .paper .blist li{border-color:var(--line-dk);color:#33444a;}
   .paper .blist li b{color:#8a6312;}
@@ -998,6 +1004,11 @@
             <circle cx="66" cy="195" r="5" fill="#C8503F"/><text x="56" y="193" fill="#e6b3aa" text-anchor="end">través</text>
             <circle cx="102" cy="270" r="5" fill="#C8503F"/><text x="92" y="268" fill="#e6b3aa" text-anchor="end">largo</text>
             <circle cx="180" cy="318" r="5" fill="#E0C282"/><text x="180" y="338" fill="#e8d3a6" text-anchor="middle">popa / empopada</text>
+            <path d="M315 200 A135 135 0 0 1 294 267" fill="none" stroke="#E0C282" stroke-width="5" stroke-linecap="round" opacity=".95"/>
+            <circle cx="309" cy="234" r="4" fill="#E0C282"/>
+            <line x1="305" y1="233" x2="268" y2="229" stroke="#E0C282" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>
+            <text x="264" y="226" text-anchor="end" font-family="Spline Sans Mono" font-size="11" fill="#f0d9a3">veloc. máx</text>
+            <text x="264" y="240" text-anchor="end" font-family="Spline Sans Mono" font-size="10" fill="#cbab63">~90–120°</text>
           </g>
         </svg>
       </div>
@@ -1111,6 +1122,13 @@
     </div>
 
     <p class="sec-intro" style="margin-top:34px"><b>E o ponto de vela mais potente?</b> Não é à bolina — é ao <b>través</b> e ao <b>largo</b> (vento de lado a três quartos). Aí o barco endireita-se, as velas trabalham com o vento a empurrar e a Portucale ganha o seu melhor andamento. À bolina sacrificas potência para ganhar barlavento; a favor, abres tudo e deslizas.</p>
+
+    <div class="speedbox">
+      <div class="sb-k">Velocidade máxima · Dufour 34</div>
+      <p>O ponto mais rápido é o <b>largo</b>: <b>vento real ~90°–120°</b>, com o ideal por volta de <b>~100°–110°</b>. Em vento aparente isso lê-se uns <b>~60°–75°</b> (o aparente vem sempre mais à proa). O barco fica direito, a quilha arrasta menos e as velas empurram a sério — não estás a cingir nem de popa cheia (onde um barco de deslocamento como este abranda).</p>
+      <p>O tecto é a <b>velocidade de casco</b>: com LWL ~8,3 m, à volta de <b>~7 nós</b>. Num largo com Força 4–5 ela lá chega; mais vento depois disso só acrescenta adornar e leme, não mais nós.</p>
+      <p class="sb-rule"><b>Regra a bordo:</b> vento fraco &rarr; aproxima-te do <b>través (~90°)</b> para construíres aparente; vento forte &rarr; abre para o <b>largo (~120°)</b> — a mesma velocidade de casco, com muito mais conforto.</p>
+    </div>
   </div>
 </section>
 
