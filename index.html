@@ -471,6 +471,25 @@
   .vscol li{font-size:14.5px;color:#dce7ea;line-height:1.4;padding:5px 0;border-bottom:1px solid rgba(231,222,200,.07);}
   .vscol li:last-child{border-bottom:none;}
   .vscol b{color:#f0d9a3;}
+  /* ---------- roteiro Rias Baixas ---------- */
+  .routemap{margin:40px 0 0;}
+  .routemap svg{width:100%;max-width:560px;display:block;margin:0 auto;border-radius:18px;}
+  .routemap figcaption{text-align:center;margin-top:10px;font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:#8aa0a8;}
+  .rlegend{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px;margin:20px 0 4px;}
+  .rlegend span{display:flex;align-items:center;gap:8px;font-family:"Spline Sans Mono",monospace;font-size:12.5px;color:#cfe0e3;}
+  .rlegend i{width:14px;height:14px;border-radius:50%;display:inline-block;}
+  .rdays{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+  @media(max-width:900px){.rdays{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.rdays{grid-template-columns:1fr;}}
+  .rday{border:1px solid var(--line);border-left:3px solid var(--dc);border-radius:14px;padding:18px 18px 16px;background:rgba(231,222,200,.03);}
+  .rday .rd-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .rday .rd-n{font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dc);}
+  .rday .rd-mi{font-family:"Spline Sans Mono",monospace;font-size:12px;color:#9fb3bb;}
+  .rday h3{font-size:18px;color:var(--foam);margin:0 0 10px;line-height:1.2;}
+  .rday ul{list-style:none;margin:0 0 10px;padding:0;}
+  .rday li{font-size:14px;color:#dce7ea;line-height:1.45;padding:5px 0;border-bottom:1px solid rgba(231,222,200,.06);}
+  .rday li:last-child{border-bottom:none;}
+  .rday .rd-note{margin:0;font-size:13px;color:#9fb3bb;font-style:italic;}
   .blist li b{color:var(--brass-soft);}
   .paper .blist li{border-color:var(--line-dk);color:#33444a;}
   .paper .blist li b{color:#8a6312;}
@@ -642,6 +661,7 @@
           <li><a href="#vento">Quando sair</a></li>
           <li><a href="#meteo">Meteo &amp; marés</a></li>
           <li><a href="#aguas">As águas de casa</a></li>
+          <li><a href="#roteiro">Roteiro Rías Baixas</a></li>
           <li><a href="#historia">A história</a></li>
           <li><a href="#diario">Histórias do diário</a></li>
           <li><a href="#galeria">Galeria de fotos</a></li>
@@ -741,6 +761,7 @@
           <li><a href="#vento">Quando sair</a></li>
           <li><a href="#meteo">Meteo &amp; marés</a></li>
           <li><a href="#aguas">As águas de casa</a></li>
+          <li><a href="#roteiro">Roteiro Rías Baixas</a></li>
           <li><a href="#historia">A história</a></li>
           <li><a href="#diario">Histórias do diário</a></li>
           <li><a href="#galeria">Galeria de fotos</a></li>
@@ -2371,6 +2392,118 @@
 
     <h3 style="font-size:22px;margin:48px 0 0">O veredicto</h3>
     <p class="sec-intro" style="margin-top:14px">No fundo, o Portucale é um <strong>clássico bem construído</strong>: rijo, marinheiro e bonito, de uma das melhores eras da Dufour. Os números confirmam a fama — <strong>40% de lastro</strong> (barco duro) e índice de risco de emborcamento <strong>1,94</strong> (do lado apto a alto-mar). Não é o mais rápido nem o mais espaçoso dos 34 pés modernos — mas é dos que melhor «olham por ti». Exactamente o que queres para aprender e para confiar.</p>
+  </div>
+</section>
+
+<!-- ===================== ROTEIRO RÍAS BAIXAS ===================== -->
+<section id="roteiro" class="pad" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Roteiro · base em Combarro</span>
+    <h2 class="lead-h">Rías Baixas em 4 dias, sempre a dormir na marina</h2>
+    <p class="sec-intro">Com a Portucale atracada em <strong>Combarro</strong>, quatro saídas de ida-e-volta cobrem o melhor da Ría de Pontevedra — a Illa de Ons, as praias de Sanxenxo, a costa de Cabo Udra e a Ría de Aldán, e a península do Hío. Tudo a menos de ~13 milhas de casa, em águas protegidas.</p>
+
+    <figure class="routemap">
+      <svg viewBox="0 0 600 600" role="img" aria-label="Esquema das quatro saídas a partir de Combarro pela Ría de Pontevedra">
+        <rect x="14" y="14" width="572" height="572" rx="18" fill="#081a25" stroke="rgba(231,222,200,.10)"/>
+        <g stroke="rgba(231,222,200,.06)" stroke-width="1">
+          <line x1="155" y1="14" x2="155" y2="586"/><line x1="296" y1="14" x2="296" y2="586"/><line x1="437" y1="14" x2="437" y2="586"/>
+          <line x1="14" y1="155" x2="586" y2="155"/><line x1="14" y1="296" x2="586" y2="296"/><line x1="14" y1="437" x2="586" y2="437"/>
+        </g>
+        <text x="34" y="300" font-family="Spline Sans Mono" font-size="11" fill="#5f8493" transform="rotate(-90 34 300)" letter-spacing="3">OCEANO ATLÂNTICO</text>
+        <!-- compass -->
+        <g transform="translate(556 58)">
+          <line x1="0" y1="14" x2="0" y2="-14" stroke="#E0C282" stroke-width="2"/><path d="M0 -18 l-5 10 h10 z" fill="#E0C282"/>
+          <text x="0" y="30" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#E0C282">N</text>
+        </g>
+        <!-- islands -->
+        <ellipse cx="84" cy="174" rx="13" ry="30" fill="#123040" stroke="#3a5c6b" stroke-width="1.4"/>
+        <ellipse cx="120" cy="488" rx="15" ry="26" fill="#123040" stroke="#3a5c6b" stroke-width="1.4"/>
+        <!-- ROUTES -->
+        <polyline points="478,103 287,154 173,71" fill="none" stroke="#3FA37C" stroke-width="2.6" stroke-dasharray="7 6" opacity=".9"/>
+        <polyline points="478,103 84,174" fill="none" stroke="#CBA14C" stroke-width="2.6" stroke-dasharray="7 6" opacity=".9"/>
+        <polyline points="478,103 244,266 276,341 334,284" fill="none" stroke="#7FA9B8" stroke-width="2.6" stroke-dasharray="7 6" opacity=".9"/>
+        <polyline points="478,103 178,418 216,405" fill="none" stroke="#C8503F" stroke-width="2.6" stroke-dasharray="7 6" opacity=".9"/>
+        <!-- Cíes excluded leg -->
+        <line x1="478" y1="103" x2="120" y2="488" stroke="#6b7d84" stroke-width="1.4" stroke-dasharray="2 7" opacity=".5"/>
+        <!-- MARKERS -->
+        <g font-family="Spline Sans Mono" font-size="12.5">
+          <circle cx="173" cy="71" r="5" fill="#3FA37C"/><text x="173" y="58" text-anchor="middle" fill="#bfe3d4">A Lanzada</text>
+          <circle cx="287" cy="154" r="5" fill="#3FA37C"/><text x="287" y="176" text-anchor="middle" fill="#bfe3d4">Sanxenxo</text>
+          <circle cx="84" cy="174" r="5.5" fill="#CBA14C"/><text x="84" y="222" text-anchor="middle" fill="#ecd4a0">Illa de Ons</text>
+          <circle cx="244" cy="266" r="5" fill="#7FA9B8"/><text x="252" y="262" fill="#cfe0e6">Cabo Udra</text>
+          <circle cx="276" cy="341" r="5" fill="#7FA9B8"/><text x="286" y="346" fill="#cfe0e6">Ría de Aldán</text>
+          <circle cx="334" cy="284" r="5" fill="#7FA9B8"/><text x="344" y="288" fill="#cfe0e6">Bueu</text>
+          <circle cx="178" cy="418" r="5" fill="#C8503F"/><text x="168" y="422" text-anchor="end" fill="#eeb3a9">Cabo Home</text>
+          <circle cx="216" cy="405" r="5" fill="#C8503F"/><text x="226" y="400" fill="#eeb3a9">Barra/Nerga</text>
+          <circle cx="120" cy="488" r="4" fill="#6b7d84"/><text x="120" y="528" text-anchor="middle" fill="#8aa0a8">Illas Cíes</text>
+          <text x="120" y="543" text-anchor="middle" font-size="10" fill="#6b7d84">(fora deste plano)</text>
+        </g>
+        <!-- COMBARRO home -->
+        <g transform="translate(478 103)">
+          <path d="M0 -11 L3 -3 L11 -3 L4.5 2 L7 10 L0 5 L-7 10 L-4.5 2 L-11 -3 L-3 -3 Z" fill="#F7FBFA" stroke="#CBA14C" stroke-width="1.2"/>
+        </g>
+        <text x="470" y="100" text-anchor="end" font-family="Spline Sans" font-size="14" font-weight="700" fill="#fff">COMBARRO</text>
+        <text x="470" y="116" text-anchor="end" font-family="Spline Sans Mono" font-size="11" fill="#CBA14C">base · regresso diário</text>
+      </svg>
+      <figcaption>Esquema das pernadas — não é carta de navegação.</figcaption>
+    </figure>
+
+    <div class="rlegend">
+      <span><i style="background:#3FA37C"></i>Dia 1 · Sanxenxo</span>
+      <span><i style="background:#CBA14C"></i>Dia 2 · Illa de Ons</span>
+      <span><i style="background:#7FA9B8"></i>Dia 3 · Cabo Udra / Aldán</span>
+      <span><i style="background:#C8503F"></i>Dia 4 · Hío</span>
+    </div>
+
+    <div class="rdays">
+      <article class="rday" style="--dc:#3FA37C">
+        <div class="rd-top"><span class="rd-n">Dia 1</span><span class="rd-mi">~16 M</span></div>
+        <h3>Aquecimento · praias de Sanxenxo</h3>
+        <ul>
+          <li><b>Sanxenxo</b> (Praia de Silgar) — almoço e banho</li>
+          <li><b>Praia da Lanzada</b> — 2 km de areal (só com mar calmo)</li>
+        </ul>
+        <p class="rd-note">Curto e descontraído, para apanhar o ritmo.</p>
+      </article>
+      <article class="rday" style="--dc:#CBA14C">
+        <div class="rd-top"><span class="rd-n">Dia 2</span><span class="rd-mi">~20 M</span></div>
+        <h3>Illa de Ons — a joia</h3>
+        <ul>
+          <li>Fundeio na <b>Praia de Melide/Dornas</b></li>
+          <li><b>Farol</b> e <b>Buraco do Inferno</b>; polvo na ilha</li>
+        </ul>
+        <p class="rd-note">Saída cedo. Autorização de fundeo obrigatória.</p>
+      </article>
+      <article class="rday" style="--dc:#7FA9B8">
+        <div class="rd-top"><span class="rd-n">Dia 3</span><span class="rd-mi">~20 M</span></div>
+        <h3>Cabo Udra, Aldán & Bueu</h3>
+        <ul>
+          <li><b>Cabo Udra</b> — penedos e aves</li>
+          <li><b>Ría de Aldán</b> — banho abrigado ao almoço</li>
+          <li><b>Bueu</b> — marisco antes de voltar</li>
+        </ul>
+        <p class="rd-note">O dia mais descansado.</p>
+      </article>
+      <article class="rday" style="--dc:#C8503F">
+        <div class="rd-top"><span class="rd-n">Dia 4</span><span class="rd-mi">~25 M</span></div>
+        <h3>A final · Hío</h3>
+        <ul>
+          <li><b>Cabo Home</b> — três faróis, vistas sobre as Cíes</li>
+          <li><b>Barra / Nerga</b> — areia branca, água caribenha</li>
+        </ul>
+        <p class="rd-note">O dia grande: saída bem cedo, regresso a meio da tarde.</p>
+      </article>
+    </div>
+
+    <div class="speedbox">
+      <div class="sb-k">Saber antes de largar</div>
+      <ul class="blist">
+        <li><b>A nortada manda no relógio.</b> O vento de N/NE entra à tarde e Combarro fica a <b>norte</b> de tudo — o regresso é sempre <b>contra o vento</b>. Faz as visitas de manhã e mete proa a casa a meio da tarde. Quanto mais a sul (Hío), mais cedo tens de sair.</li>
+        <li><b>Ons precisa de autorização de fundeo</b> (Parque Nacional: vagas limitadas, tanque de retenção, AIS). Trata com antecedência.</li>
+        <li><b>As Cíes ficam de fora</b> deste formato: ~15 M só de ida e o regresso seria a bombear para norte contra a nortada. Pedem noite a bordo ou base na Ría de Vigo.</li>
+        <li><b>Fundeio:</b> Lanzada e Barra são abertas ao swell — só com tempo bom e sempre a sotavento. Aldán é o refúgio garantido.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
