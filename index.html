@@ -649,8 +649,8 @@
     </div>
     <div class="hero-art">
       <figure class="hero-photo">
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="fotos/portucale-regresso-por-sol.jpg">
-          <source src="video/portucale-capa.mp4" type="video/mp4" />
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="fotos/portucale-regresso-por-sol.jpg">
+          <source src="video/portucale-capa.mp4?v=2" type="video/mp4" />
           <img src="fotos/portucale-regresso-por-sol.jpg" alt="O veleiro Portucale a navegar ao pôr do sol, ao largo de Leixões" />
         </video>
         <figcaption>Portucale · a navegar</figcaption>
@@ -2550,6 +2550,17 @@
     });
     update(rng.value);
   })();
+  /* ---- ensure hero video autoplays ---- */
+  var hv=document.querySelector('.hero-video');
+  if(hv){
+    hv.muted=true; hv.setAttribute('muted','');
+    var tryPlay=function(){ try{ var p=hv.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} };
+    tryPlay();
+    hv.addEventListener('loadeddata', tryPlay);
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+    document.addEventListener('touchstart', tryPlay, {once:true, passive:true});
+    document.addEventListener('click', tryPlay, {once:true});
+  }
 })();
 </script>
 </body>
