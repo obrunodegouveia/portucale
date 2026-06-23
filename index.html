@@ -613,6 +613,7 @@
           <li><a href="#partes">As partes do barco</a></li>
           <li><a href="#nos">Nós essenciais</a></li>
           <li><a href="#regras">Regras de evitação</a></li>
+          <li><a href="#propwalk">Efeito de hélice</a></li>
           <li><a href="#atracar">Atracar</a></li>
           <li><a href="#fundear">Fundear</a></li>
           <li><a href="#instrumentos">Os instrumentos</a></li>
@@ -709,6 +710,7 @@
           <li><a href="#partes">As partes do barco</a></li>
           <li><a href="#nos">Nós essenciais</a></li>
           <li><a href="#regras">Regras de evitação</a></li>
+          <li><a href="#propwalk">Efeito de hélice</a></li>
           <li><a href="#atracar">Atracar</a></li>
           <li><a href="#fundear">Fundear</a></li>
           <li><a href="#instrumentos">Os instrumentos</a></li>
@@ -1497,6 +1499,73 @@
 </section>
 
 <!-- ===================== DOCKING & ROLES ===================== -->
+<!-- ===================== PROP WALK ===================== -->
+<section id="propwalk" class="pad" style="background:linear-gradient(180deg,var(--ink),var(--navy-2))">
+  <div class="wrap reveal">
+    <span class="eyebrow">Manobras · efeito de hélice</span>
+    <h2 class="lead-h">Prop walk: porque a popa foge para um lado</h2>
+    <p class="sec-intro">A hélice não só empurra — também «anda de lado», como uma roda de pás, e o jato de água bate de viés no casco. O resultado é a popa a deslizar para um dos bordos, sobretudo em <strong>marcha-atrás</strong> e a <strong>baixa velocidade</strong> (antes de a água correr sobre o leme). Não é defeito: é uma ferramenta — depois de saberes para que lado puxa, usa-la a teu favor.</p>
+
+    <div class="split" style="align-items:start;margin-top:42px">
+      <div class="posfig">
+        <svg viewBox="0 0 360 360" role="img" aria-label="Efeito de hélice: em marcha-atrás a popa vai para bombordo; em marcha-à-vante, ligeiramente para estibordo">
+          <line x1="180" y1="44" x2="180" y2="300" stroke="rgba(231,222,200,.10)" stroke-width="1" stroke-dasharray="3 6"/>
+          <!-- BOAT A: reverse -->
+          <text x="98" y="24" text-anchor="middle" font-family="Spline Sans" font-size="13" fill="#e6b3aa" font-weight="700">popa &rarr; bombordo</text>
+          <path d="M98 78 C118 102 122 154 114 252 C110 264 104 270 98 270 C92 270 86 264 82 252 C74 154 78 102 98 78 Z" fill="#0c2734" stroke="#CBA14C" stroke-width="2"/>
+          <ellipse cx="98" cy="258" rx="11" ry="5" fill="#0a1c27" stroke="#E0C282" stroke-width="1.6"/>
+          <path d="M112 258 A14 14 0 1 1 107 247" fill="none" stroke="#7FA9B8" stroke-width="2"/>
+          <path d="M107 247 l-6 1 l3 6 z" fill="#7FA9B8"/>
+          <line x1="86" y1="250" x2="46" y2="250" stroke="#C8503F" stroke-width="6" stroke-linecap="round"/>
+          <path d="M42 250 l16 -9 v18 z" fill="#C8503F"/>
+          <g stroke="#7FA9B8" stroke-width="2" fill="#7FA9B8" opacity=".55">
+            <line x1="98" y1="286" x2="98" y2="306"/><path d="M98 312 l-6 -12 h12 z"/>
+          </g>
+          <text x="120" y="300" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">ré</text>
+          <text x="98" y="334" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e8d3a6">MARCHA-ATRÁS</text>
+          <!-- BOAT B: forward -->
+          <text x="262" y="24" text-anchor="middle" font-family="Spline Sans" font-size="13" fill="#bfe0d2" font-weight="700">popa &rarr; estibordo</text>
+          <g stroke="#7FA9B8" stroke-width="2" fill="#7FA9B8" opacity=".55">
+            <line x1="262" y1="58" x2="262" y2="40"/><path d="M262 34 l-6 12 h12 z"/>
+          </g>
+          <text x="284" y="52" font-family="Spline Sans Mono" font-size="10" fill="#9fc0cc">avante</text>
+          <path d="M262 78 C282 102 286 154 278 252 C274 264 268 270 262 270 C256 270 250 264 246 252 C238 154 242 102 262 78 Z" fill="#0c2734" stroke="#CBA14C" stroke-width="2"/>
+          <ellipse cx="262" cy="258" rx="11" ry="5" fill="#0a1c27" stroke="#E0C282" stroke-width="1.6"/>
+          <line x1="274" y1="250" x2="306" y2="250" stroke="#E0C282" stroke-width="4" stroke-linecap="round" opacity=".85"/>
+          <path d="M310 250 l-14 -8 v16 z" fill="#E0C282" opacity=".85"/>
+          <text x="262" y="288" text-anchor="middle" font-family="Spline Sans Mono" font-size="9.5" fill="#8fae9f">(ligeiro)</text>
+          <text x="262" y="334" text-anchor="middle" font-family="Spline Sans Mono" font-size="11" fill="#e8d3a6">MARCHA-À-VANTE</text>
+          <text x="180" y="354" text-anchor="middle" font-family="Spline Sans Mono" font-size="10" fill="#8aa0a8">BB = bombordo (esq.) · EB = estibordo (dir.)</text>
+        </svg>
+      </div>
+      <div class="reassure">
+        <p class="pull">Na Portucale, em marcha-atrás a popa cai para <span style="color:var(--port)">bombordo</span>.</p>
+        <p>Como na esmagadora maioria dos veleiros de um só motor, a Portucale tem (quase de certeza) <b>hélice de mão direita</b>. Em marcha-atrás a popa anda para <b>bombordo</b>; a avante, há um toque ligeiro para estibordo, quase sempre tapado pelo leme.</p>
+        <p>O efeito é mais forte <b>no primeiro instante</b> e a baixo andamento. Assim que ganhas seguimento e a água corre sobre o leme, ele «morde» e passas a mandar tu — por isso, em ré, dá <b>golpes curtos</b> em vez de gás contínuo.</p>
+        <p style="color:#aebfc4"><b>Confirma no barco:</b> em águas calmas e parado, dá um golpe seco de marcha-atrás e vê para onde a popa vai. Se for para estibordo, a tua hélice é de mão esquerda — e este diagrama lê-se ao contrário.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="num">P</div>
+        <h3>Atraca a bombordo</h3>
+        <p>Sempre que possível, leva o <b>lado esquerdo</b> do barco ao cais. Ao engatar a ré para travar, a popa <b>encosta sozinha</b> ao pontão — em vez de fugir dele. Metade da atracação fica feita pela hélice.</p>
+      </div>
+      <div class="card">
+        <div class="num">↻</div>
+        <h3>Vira no sítio (p/ estibordo)</h3>
+        <p>Pouco espaço? Roda para <b>estibordo</b>: leme todo a estibordo + <b>golpe a avante</b> (a proa cai a estibordo), depois <b>marcha-atrás</b> (a popa anda para bombordo e mata o seguimento). Repete — rodas quase no comprimento do barco. É o «back-and-fill».</p>
+      </div>
+      <div class="card">
+        <div class="num">!</div>
+        <h3>Trava a contar com ela</h3>
+        <p>Ao meter a ré para parar, conta que a <b>popa cai para bombordo</b>. Antecipa com um toque de leme ou da proa, e nunca te admires quando a popa «procura» esse lado — é a hélice, não o vento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="pad" id="atracar" style="background:linear-gradient(180deg,var(--navy-2),var(--ink))">
   <div class="wrap reveal">
     <span class="eyebrow">Manobras · atracação</span>
